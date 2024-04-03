@@ -1,0 +1,106 @@
+@charset "UTF-8";
+
+/* 꽃 pc */
+
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
+/* 고운 바탕 구글폰트 */
+
+* {
+    /* outline: 1px solid rgb(62, 26, 139); */
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* 애스터리스크로 padding, margin값 초기화 or 아래 방법
+
+html, p, ul, ol, ul, h1, h2, ... {
+    padding: 0;
+    margin: 0;
+}
+
+*/
+
+/* html { 아래처럼 :root 라고 써도 동일 */
+:root {
+    font-family: "Gowun Batang", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+h1 {
+    text-align: center;
+    font-size: 60px;
+    margin: 20px 0 50px;
+}
+
+/* 바디를 기준으로 레이아웃 가운데 정렬 */
+/* body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; 
+} */
+
+.inner {
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    /* 스스로 레이아웃 가운데 정렬 */
+    margin: 0 auto;
+}
+
+section {
+    height: 327px;
+    display: flex;
+    gap: 78px;
+    align-items: center;
+}
+
+/* 자식의 순서를 바꿀 수 있는 속성 order, self형식으로 선언
+기본 html의 나열이 최우선 순위, 그 이후로 선언된 order 속성에 따라
+순서가 변경될 수 있다 */
+
+/* section:nth-of-type(2) .textBox {
+    order: 1;
+}
+
+section:nth-of-type(2) img {
+    order: 2;
+} */
+
+.yellow .textBox {
+    order: 1;
+}
+
+.yellow img {
+    order: 2;
+}
+
+.textBox > p:nth-child(1) {
+    font-size: 15px;
+}
+
+.textBox > h2 {
+    color: #BABABA;
+    -webkit-text-stroke-width: 1;
+    -webkit-text-stroke-color: #FFFEFE;
+    font-size: 35px;
+    font-weight: 800;
+    line-height: normal;
+    padding-bottom: 30px;
+}
+
+.white h2, .white p:nth-child(1) {
+    color:#BABABA;
+}
+
+.yellow h2, .yellow p:nth-child(1) {
+    color: #FB9434;
+}
+
+.pink h2, .pink p:nth-child(1) {
+    color: hotpink;
+}

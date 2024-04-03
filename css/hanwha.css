@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+/* 한화에어로스페이스 */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: 1px solid navy;
+}
+
+:root {
+    font-family: "Gothic A1", sans-serif;
+  }
+
+.inner {
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap: 10px;
+    /* 스스로 레이아웃 가운데 정렬 */
+    margin: 0 auto;
+}

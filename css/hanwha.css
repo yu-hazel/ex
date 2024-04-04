@@ -20,12 +20,28 @@
     align-items:flex-start;
     gap: 10px;
     /* 스스로 레이아웃 가운데 정렬 */
-    /* margin: 0 auto; */
+    margin: 0 auto 91px;
+    /* 위 좌우 아래 */
+}
+
+.inner:first-of-type > h1 {
+    font-size: 55px;
+    font-weight: 400;
+}
+
+.inner:first-of-type > h2 {
+    font-size: 35px;
+    font-weight: 300;
+}
+
+.inner:first-of-type > p {
+    font-size: 15px;
 }
 
 .card {
     display: flex;
     font-size: 0;
+    margin-top: 60px;
 }
 
 article {
@@ -38,6 +54,12 @@ h2 {
     font-size: 18px;
 }
 
+section:nth-of-type(2) .inner > h2 {
+    font-size: 30px;
+    color: white;
+    font-weight: 300;
+}
+
 section:nth-of-type(1) .inner {
     padding-top: 80px;
 }
@@ -46,11 +68,34 @@ section:nth-of-type(2) .inner {
     padding-top: 50px;
 }
 
+article div {
+    padding: 30px 30px 0 30px;
+}
+
 article:nth-of-type(2) {
     padding-top: 80px;
 }
 
+article > div h2 {
+    font-size: 30px;
+    margin-bottom: 14px;
+}
+
+article > div p:first-of-type {
+    font-size: 20px;
+    margin-bottom: 14px;
+}
+
+article > div p:nth-of-type(2) {
+    font-size: 15px;
+}
+
 article:nth-of-type(3) {
     padding-top: 60px;
+}
+
+section:nth-of-type(2) {
+    background: url(/git/ex/img/hanwha/sec02.png) no-repeat;
+    background-size: 100%;
 }
 

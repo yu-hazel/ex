@@ -1,0 +1,218 @@
+@charset "UTF-8";
+
+/* 스타벅스 (현대LC) */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+/* 구글폰트 Noto Sans KR */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+/* 구글폰트 Inter */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* outline: 1px solid gray; */
+} 
+:root {
+    font-family: "Noto Sans KR", sans-serif;
+}
+section:nth-of-type(1) {
+    width: 1440px;
+    height: 830px;
+    background: url(/ex/img/starbucks/sec01_bg.png) no-repeat;
+    background-size: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+.inner {
+    width: 1148px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 5px;
+}
+.mainTitle > h2 {
+    font-size: 100px;
+    font-family: "Inter";
+    color: #806969;
+    text-shadow: 3px 4px 8.1px rgba(0, 0, 0, 0.25);
+    font-weight: 700;
+    letter-spacing: 11px;
+}
+.subText p:nth-child(1) {
+    color: #E1B0B0;
+    font-family: "Inter";
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.subText p:nth-child(2) {
+    color: #E9C1C1;
+    font-family: "Inter";
+    font-size: 20px;
+    font-weight: 600;
+}
+section:nth-of-type(1) .button {
+    border-radius: 69px;
+    text-decoration: none;
+    border: 1.5px solid #FFF;
+    background: rgba(199, 159, 159, 0.5);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    color: #ffffff;
+    padding:12px;
+    margin: 30px 0 0;
+}
+section:nth-of-type(2){
+    display: flex;
+    width: 1440px;
+    height: 830px;
+}
+section:nth-of-type(2) .left {
+    display: flex;
+    /* width: 720px; */
+    padding-left: 38px;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 10px;
+}
+section:nth-of-type(2) .right {
+    display: flex;
+    /* width: 720px; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 21px;
+    flex: 1 0 0;
+    background-color: #FEF4F6;;
+}
+section:nth-of-type(2) .left h2 {
+    color: #E99;
+    font-size: 35px;
+    font-weight: 700;
+}
+section:nth-of-type(2) .left p {
+    color: #AF8D76;
+    font-size: 25px;
+    font-weight: 400;
+}
+section:nth-of-type(2) .right p:nth-child(1) {
+    color: #E18383;
+    font-size: 20px;
+    font-weight: 700;
+}
+section:nth-of-type(2) .right h2 {
+    color: #B56363;
+    font-size: 30px;
+    font-weight: 700;
+}
+section:nth-of-type(2) .right p:nth-child(3) {
+    color: #B97E7E;
+    font-size: 20px;
+    font-weight: 400;
+}
+section:nth-of-type(2) .right .button {
+    height: 42px;
+    padding: 10px;
+    border-radius: 30px;
+    border: 1px solid #B97E7E;
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0);
+    color: #B97E7E;
+    font-size: 15px;
+    font-weight: 700;
+}
+section:nth-of-type(3) {
+    display: flex;
+    width: 1440px;
+    height: 827px;
+    justify-content: center;
+}
+section:nth-of-type(3) .left {
+    display: flex;
+    width: 720px;
+    justify-content: flex-end;
+    align-items: center;
+    background: #FFF3FC;
+}
+section:nth-of-type(3) .left > img {
+    width: 600px;
+    height: 470px;
+}
+section:nth-of-type(3) .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 720px;
+    background: #fffbfd;
+}
+section:nth-of-type(3) .right > img {
+    width: 600px;
+    height: 470px;
+}
+section:nth-of-type(3) .right h2 {
+    color: #9C9292;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 52px;
+}
+section:nth-of-type(4) {
+    background: #fef4f6;
+    width: 1440px;
+    height: 590px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+section:nth-of-type(4) img:first-child {
+    width: 330px;
+    height: 318px;
+}
+section:nth-of-type(4) img:nth-child(2) {
+    width: 258px;
+    height: 260px;
+}
+section:nth-of-type(4) div {
+    text-align: center;
+}
+section:nth-of-type(4) h2 {
+    color: rgba(1, 1, 1, 0.74);
+    font-size: 36px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+section:nth-of-type(4) p:nth-of-type(1) {
+    color: rgba(1, 1, 1, 0.74);
+    font-family: "Inter";
+    font-size: 24px;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+section:nth-of-type(4) p:nth-of-type(2) {
+    color: rgba(1, 1, 1, 0.74);
+    font-family: "Inter";
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+section:nth-of-type(4) .button { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Inter";
+    text-decoration: none;
+    width: 250px;
+    height: 70px;
+    border-radius: 20px;
+    background: #FFC3C3;
+    color: #fff;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 577;
+    margin: 0 auto;
+    /* margin: 0 auto; >> 스스로 레이아웃 가운데 정렬 */
+}
+

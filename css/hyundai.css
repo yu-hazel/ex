@@ -1,0 +1,211 @@
+@charset "UTF-8";
+
+/* 현대 LC */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+/* 구글폰트 Noto Sans KR */
+
+* {
+    padding: 0;
+    margin: 0;
+    /* outline: 1px solid cornflowerblue; */
+}
+:root {
+    font-family: "Noto Sans KR", sans-serif;
+}
+section:first-child {
+    width: 1794px;
+    height: 830px;
+    display: flex;
+    justify-content: center;
+    background: url(/ex/img/hyundai/sec01.png) lightgray 50% / cover no-repeat;
+    margin: 0 auto;
+}
+section:first-child .inner {
+    width: 960px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+}
+section:first-child .inner h2 {
+    color: #fff;
+    font-size: 100px;
+    font-weight: 700;
+    letter-spacing: 20px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+section:first-child .inner h3 {
+    color: #009882;
+    font-size: 40px;
+    font-weight: 600;
+}
+section:first-child .inner div {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+}
+section:first-child .inner .button {
+    width: 78px;
+    height: 19px;
+    padding: 14px 64px;
+    background: #009882;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+}
+section:nth-of-type(2) {
+    display: flex;
+    justify-content: center;
+    width: 1794px;
+    height: 830px;
+    margin: 0 auto;
+}
+section:nth-of-type(2) .left {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1 0 0;
+}
+section:nth-of-type(2) .left .inner600 {
+    width: 600px;
+}
+section:nth-of-type(2) .left .inner600 h2 {
+    font-size: 50px;
+    font-weight: 700;
+}
+section:nth-of-type(2) .right {
+    justify-content: flex-start;
+    /* align-items: center; */
+    flex: 1 0 0;
+    background-color: #009882;
+}
+section:nth-of-type(2) .right .inner600 {
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    height: 382px;
+    padding: 220px 0 0 150px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+    gap: 20px;
+}
+section:nth-of-type(2) .right .inner600 h2 {
+    font-size: 50px;
+    font-weight: 700;
+}
+section:nth-of-type(2) .right .inner600 div:first-of-type {
+    font-size: 30px;
+}
+section:nth-of-type(3) {
+    display: flex;
+    width: 1794px;
+    height: 830px;
+    margin: 0 auto;
+}
+section:nth-of-type(3) .left {
+    display: flex;
+    padding-top: 100px;
+    justify-content: flex-end;
+    flex: 1 0 0;
+}
+section:nth-of-type(3) .left .inner600 {
+    display: flex;
+    flex-direction: column;
+    gap: 300px;
+    width: 600px;
+    height: 470px;
+    background: url(/ex/img/hyundai/sec03_left.png) no-repeat;
+}
+section:nth-of-type(3) .text { 
+    padding: 30px 0 0 30px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 30px;
+    font-weight: 700;
+    color: #fff;
+}
+section:nth-of-type(3) .button {
+    display: flex;
+    width: 200px;
+    height: 45px;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid #fff;
+    gap: 5px;
+    margin-left: 350px;
+}
+section:nth-of-type(3) .left .button span:first-child {
+    color: #009882;
+}
+section:nth-of-type(3) .right {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 0;
+    width: 600px;
+    height: 830px;
+    gap: 80px
+}
+section:nth-of-type(3) .right .inner600 {
+    display: flex;
+    flex-direction: column;
+    background: url(/ex/img/hyundai/sec03_right.png);
+    width: 600px;
+    height: 470px;
+    gap: 300px;
+}
+section:nth-of-type(3) .right h2 {
+    font-size: 50px;
+    font-weight: 700;
+    margin-top: 40px;
+}
+section:nth-of-type(3) .right .button {
+    background: #009882;
+    border: none;
+}
+section:nth-of-type(4) {
+    display: flex;
+    justify-content: center;
+    width: 1794px;
+    height: 599px;
+    background: url(/ex/img/hyundai/sec04.png) no-repeat;
+    margin: 0 auto;
+}
+section:nth-of-type(4) .inner {
+    display: flex;
+    width: 960px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: center;
+    gap: 100px;
+}
+section:nth-of-type(4) .inner h2 {
+    color: #fff;
+    font-size: 50px;
+    font-weight: 700;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+section:nth-of-type(4) .inner div {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+}
+section:nth-of-type(4) .inner .button {
+    display: flex;
+    width: 200px;
+    height:120px;
+    justify-content: center;
+    align-items: center;
+    background: #009882;
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    text-decoration: none;
+}

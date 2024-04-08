@@ -13,19 +13,19 @@
     margin: 0;
     box-sizing: border-box;
     /* outline: 1px solid gray; */
-} 
+}
 :root {
     font-family: "Noto Sans KR", sans-serif;
 }
 section:nth-of-type(1) {
     width: 1440px;
     height: 830px;
-    background: url(/ex/img/starbucks/sec01_bg.png) no-repeat;
-    background-size: 100%;
+    background: url(/ex/img/starbucks/sec01_bg.png) lightgray 50% / cover no-repeat;
     display: flex;
     justify-content: center;
+    /* align-self: stretch; */
     align-items: center;
-} 
+}
 .inner {
     width: 1148px;
     display: flex;

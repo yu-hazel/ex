@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <style>
+        .other,
+        .parent {
+            border: 5px solid tomato;
+        }
+
+        .parent {
+            position: relative;
+        }
+
+        .me {
+            background-color: black;
+            color: white;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="other">other</div>
+    <div class="parent">parent
+        <div class="me">me</div>
+    </div>
+</body>
+
+
+</html>

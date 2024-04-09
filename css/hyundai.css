@@ -15,7 +15,6 @@
     font-family: "Noto Sans KR", sans-serif;
 }
 section:first-child {
-    /* width: 1794px; */
     height: 830px;
     display: flex;
     justify-content: center;
@@ -87,7 +86,6 @@ section:nth-of-type(2) .left .inner600 h2 {
 }
 section:nth-of-type(2) .right {
     justify-content: flex-start;
-    /* align-items: center; */
     flex: 1 0 0;
     background-color: #009882;
 }

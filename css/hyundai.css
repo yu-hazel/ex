@@ -8,13 +8,14 @@
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
     /* outline: 1px solid cornflowerblue; */
 }
 :root {
     font-family: "Noto Sans KR", sans-serif;
 }
 section:first-child {
-    width: 1794px;
+    /* width: 1794px; */
     height: 830px;
     display: flex;
     justify-content: center;
@@ -25,7 +26,8 @@ section:first-child .inner {
     width: 960px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-top: 250px;
     align-items: center;
     gap: 20px;
     text-align: center;
@@ -48,18 +50,19 @@ section:first-child .inner div {
     font-weight: 400;
 }
 section:first-child .inner .button {
-    width: 78px;
-    height: 19px;
-    padding: 14px 64px;
+    display: flex;
+    width: 206px;
+    height: 47px;
+    padding: 14px 0px;
     background: #009882;
     color: #fff;
+    justify-content: center;
     text-decoration: none;
     font-size: 14px;
-}
+}    
 section:nth-of-type(2) {
     display: flex;
     justify-content: center;
-    width: 1794px;
     height: 830px;
     margin: 0 auto;
 }
@@ -71,10 +74,16 @@ section:nth-of-type(2) .left {
 }
 section:nth-of-type(2) .left .inner600 {
     width: 600px;
+    height: 100%;
+    padding-top: 150px;
+}
+section:nth-of-type(2) .left .inner600 img {
+    position: absolute;
 }
 section:nth-of-type(2) .left .inner600 h2 {
     font-size: 50px;
     font-weight: 700;
+    margin-bottom: 20px;
 }
 section:nth-of-type(2) .right {
     justify-content: flex-start;
@@ -85,8 +94,8 @@ section:nth-of-type(2) .right {
 section:nth-of-type(2) .right .inner600 {
     display: flex;
     flex-direction: column;
-    width: 450px;
-    height: 382px;
+    width: 600px;
+    height: 100%;
     padding: 220px 0 0 150px;
     color: #fff;
     font-size: 20px;
@@ -102,7 +111,7 @@ section:nth-of-type(2) .right .inner600 div:first-of-type {
 }
 section:nth-of-type(3) {
     display: flex;
-    width: 1794px;
+    /* width: 1794px; */
     height: 830px;
     margin: 0 auto;
 }
@@ -172,10 +181,10 @@ section:nth-of-type(3) .right .button {
 }
 section:nth-of-type(4) {
     display: flex;
-    justify-content: center;
-    width: 1794px;
-    height: 599px;
-    background: url(/ex/img/hyundai/sec04.png) no-repeat;
+    justify-content: center;    height: 599px;
+    background-image: url(/ex/img/hyundai/dot.png), url(/ex/img/hyundai/sec04.png);
+    background-size: 3px 3px, cover;
+    background-repeat: repeat, no-repeat;
     margin: 0 auto;
 }
 section:nth-of-type(4) .inner {

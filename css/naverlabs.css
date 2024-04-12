@@ -9,7 +9,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    /* outline: 1px solid cornflowerblue; */
+    outline: 1px solid cornflowerblue;
 }
 :root {
     font-family: "Roboto", sans-serif;
@@ -51,7 +51,7 @@ div.header {
 .menu ul li::after {
     content: "";
     position: absolute;
-    left: 0;
+    left: -1px;
     bottom: -5px;
     width: 100%;
     height: 5px;
@@ -124,4 +124,38 @@ button:hover {
     flex-direction: column;
     width: 987px;
     gap: 34px;
+}
+@keyframes slide {
+    0% { transform: translateX(0); }
+    33.33% { transform: translateX(-100%); }
+    66.66% { transform: translateX(-200%); }
+    100% { transform: translateX(0); }
+}
+.carousel {
+    width: 987px;
+    overflow: hidden;
+    position: relative;
+}
+.slides {
+    display: flex;
+    /* transition: transform 1s ease; */
+    animation: slide 8s infinite;
+}
+.slide {
+    flex: 0 0 auto;
+    width: 987px;
+    position: relative;
+}
+.slideContent {
+    margin: 0 0 63px 81px;
+}
+.slideContent h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 32px 0 14px;
+}
+.slideContent p {
+    color: #B5B5B5;
+    font-size: 13px;
+    font-weight: 500;
 }

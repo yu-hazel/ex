@@ -37,10 +37,10 @@
     width: 50%;
     height: 500px;
     /* flex-flow: row nowrap; */
-    /* flex-flow: row wrap; */
+    flex-flow: row wrap;
     /* flex-flow: column nowrap; */
     /* flex-flow: column wrap; */
-    flex-flow: column wrap-reverse;
+    /* flex-flow: column wrap-reverse; */
 }
 /* flex-wrap과 flex-flow에서 부모의 사이즈가 지정되어있고,하위객체의 사이즈가 지정 되지 않은 경우에는 객체에 stretch의 효과로 부모를 덮어버린다, 객체의 사이즈가 지정 된 경우 부모 세로값 기준으로 row가 등간격으로 벌어진다. 하지만 세로기준 space-between하고는 느낌이 다르다.*/
 /* flex-wrap: nowrap;의 경우 지정된 부모객체에 직선으로 맞추기 위해 하위객체의 사이즈가 재조정 되는데, content만 남겨놓고 리사이징이 되서 더이상 줄일 영역이 없으면 부모를 뚫고 나간다 */

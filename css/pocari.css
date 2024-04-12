@@ -1,0 +1,154 @@
+@charset "UTF-8";
+/* 포카리 sec03 유혜인 */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* outline: 1px solid powderblue; */
+}
+.sec02, .sec03, .esg, .blueLabel {
+    display: flex;
+    width: 1440px;
+    margin: 0 auto;
+}
+.left {
+    display: flex;
+    flex-direction: column;
+    background: url(/ex/img/pocari/left.png) no-repeat;
+    background-size: cover;
+    width: 720px;
+    height: 1024px;
+}
+.inner700 {
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+}
+.lets {
+    font-size: 70px;
+    font-weight: 700;
+    margin: 46px 0;
+    text-shadow: 3px 2px rgb(185, 185, 185);
+}
+.lets div:first-child {
+    color: #007DC6;
+}
+.lets div:last-child {
+    color: #3395B9;
+}
+.subText {
+    color: #3a3534;
+    font-size : 40px;
+    font-weight: 700;
+    margin-bottom: 146px;
+}
+.subText span {
+    color : #0033a6;
+}
+.components {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+.com {
+    display: flex;
+    width: 175px;
+    height: 249px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+.line {
+    width: 7px;
+    height: 1px;
+}
+.water .line {
+    background-color:#0033A6;
+}
+.ion .line {
+    background-color:#007DC6;
+}
+.best .line {
+    background-color:#3395B9;
+}
+.com div:first-of-type {
+    font-size: 20px;
+    font-weight: 700;
+}
+.com div:last-of-type {
+    font-size: 12px;
+    font-weight: 700;
+}
+.water div:first-of-type {
+    color: #0033A6;
+}
+.ion div:first-of-type {
+    color: #007DC6;
+}
+.best div:first-of-type {
+    color: #3395B9;
+}
+.right {
+    display: flex;
+    flex-direction: column;
+    width: 720px;
+    padding: 100px 40px 30px;
+    background: url(/ex/img/pocari/right.png);
+    background-origin: content-box;
+}
+.right h2 {
+    font-size: 45px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+.sub {
+    font-size: 35px;
+    font-weight: 700;
+    margin-top: 5px;
+}
+.sub span {
+    font-size: 50px;
+    color: #007DC6;
+}
+.sub p:last-of-type {
+    font-size: 15px;
+    font-weight: 400;
+}
+.right h3 {
+    font-size: 35px;
+    font-weight: 700;
+    margin-top: 10px;
+}
+.sec03 {
+    flex-direction: column;
+}
+.esg, .blueLabel {
+    width: 1380px;
+}
+.blueLabel img {
+    order :2;
+}
+.blueLabel > div {
+    order :1;
+}
+.esg > div, .blueLabel > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 641px;
+}
+.esg p:first-of-type, .blueLabel p:first-of-type {
+    color: #54BFDB;
+    font-size: 50px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 39px;
+}
+.esg p:last-of-type, .blueLabel p:last-of-type {
+    text-align: center;
+    font-family: "Inter";
+    font-size: 20px;
+    font-weight: 400;
+}

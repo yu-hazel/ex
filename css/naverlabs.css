@@ -66,7 +66,7 @@ div.header {
 }
 .eng {
     display: flex;
-    padding: 10px;
+    padding: 10px 8px 10px 10px;
     justify-content: center;
     align-items: center;
     border: 1px solid #000;
@@ -135,6 +135,7 @@ button:hover {
     width: 987px;
     overflow: hidden;
     position: relative;
+    border-bottom: 1px solid #000;
 }
 .slides {
     display: flex;
@@ -158,4 +159,62 @@ button:hover {
     color: #B5B5B5;
     font-size: 13px;
     font-weight: 500;
+}
+.recent {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    position: relative;
+}
+.recent::after {
+    content: "";
+    position: absolute;
+    width: 11px;
+    height: 11px;
+    top: 5px;
+    left: 67px;
+    background: url(/ex/img/naverlabs/Polygon.png) no-repeat;
+}
+article {
+    display: flex;
+    width: 987px;
+    flex-direction: column;
+}
+.articleOne {
+    display: flex;
+    justify-content: space-between;
+}
+.articleThumbnail {
+    order: 2;
+    width: 280px;
+    height: 150px;
+    background: url(/ex/img/naverlabs/article.png);
+}
+.articleText {
+    display: flex;
+    width: 665px;
+    flex-direction: column;
+    order: 1;
+    gap: 24px;
+}
+.articleText h3 {
+    font-size: 20px;
+    font-weight: 700;
+}
+.articleText p {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 20px;
+}
+.articleText p:last-of-type {
+    color: #B5B5B5;
+    font-size: 13px;
+    font-weight: 500;
+}
+.article {
+    flex-direction: row;
 }

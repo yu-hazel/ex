@@ -135,7 +135,7 @@ button:hover {
 .carousel {
     width: 987px;
     overflow: hidden;
-    position: relative;
+    /* position: relative; */
     border-bottom: 1px solid #cacaca;
 }
 .slides {
@@ -218,4 +218,9 @@ article {
 }
 .article {
     flex-direction: row;
+}
+.article.keywords {
+    padding-bottom: 30px;
+    border-bottom: 1px solid #cacaca;
+    margin-bottom: 40px;
 }

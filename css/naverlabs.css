@@ -100,7 +100,8 @@ aside {
 button {
     display: inline-flex;
     width: auto;
-    font-family: "Roboto";
+    font-family: inherit;
+    /* <button>은 부모의 font-family를 상속받지 않는 태그이므로, inherit선언을 해주거나 개별로 속성값을 지정해 줘야 한다. */
     font-size: 10px;
     font-weight: 400;
     letter-spacing: -0.4px;

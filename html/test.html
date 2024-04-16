@@ -5,24 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>test</title>
-    <style>
-        .other,
-        .parent {
-            border: 5px solid tomato;
-        }
-
-        .parent {
-            position: relative;
-        }
-
-        .me {
-            background-color: black;
-            color: white;
-            position: absolute;
-            top: 0px;
-            left: 0px;
-        }
-    </style>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="/ex/css/test.css">
 </head>
 
 <body>
@@ -30,6 +17,32 @@
     <div class="parent">parent
         <div class="me">me</div>
     </div>
+    <div class="box">
+        <p>
+            정당은 법률이 정하는 바에 의하여 국가의 보호를 받으며, 국가는 법률이 정하는 바에 의하여 정당운영에 필요한 자금을 보조할 수 있다. 대통령은 국가의 독립·영토의 보전·국가의 계속성과 헌법을
+            수호할 책무를 진다.
+        </p>
+    </div>
+    <div class="rotateY">
+        <div class="circle c01">
+            <p class="front">hover!</p>
+            <p class="back">
+                <span class="material-symbols-outlined">
+                    diversity_2
+                </span>
+            </p>
+        </div>
+    </div>
+    <!-- animate library 활용하기 -->
+    <div class="ani">
+        <div class="animate__animated animate__jello">CSS Animate 라이브러리</div>
+    </div>
+    <!-- aos animate library -->
+    <div data-aos="fade-right" class="scrollAni">스크롤 애니메이션</div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 

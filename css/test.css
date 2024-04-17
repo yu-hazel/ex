@@ -22,6 +22,7 @@
 .box {
     width: 300px;
     height: 400px;
+    margin: 100px;
     cursor: pointer;
     display: flex;
     align-items: flex-end;
@@ -123,6 +124,60 @@
     -webkit-transform: rotateY(0deg);
     transform: rotateY(0deg);
 }
+.aniBox {
+    display: flex;
+    justify-content: center;
+    margin: 100px;
+    width: 200px;
+    height: 400px;
+    border-top: 5px solid rgb(168, 120, 236);
+    border-bottom: 5px solid rgb(230, 82, 218);
+}
+@keyframes ball {
+    0% {
+        transform: translate(0);
+    }
+    50% {
+        transform: translateY(200%);
+        height: 100px;
+        background-color: rgb(168, 120, 236);
+    }
+    55% {
+        transform: translateY(350%);
+        height: 90px;
+        background-color: rgb(230, 82, 218);
+    }
+    65% {
+        transform: translateY(250%);
+        height: 100px;
+        background-color: rgb(235, 78, 167);
+    }
+    95% {
+        transform: translateY(200%);
+        height: 100px;
+        background-color: rgb(234, 100, 176);
+    }
+    100% {
+        transform: translateY(0%);
+        /* background-color: rgb(168, 120, 236); */
+    }
+}
+.myAni {
+    /* margin: 100px; */   
+    width: 100px;
+    height: 90px;
+    background: rgb(168, 120, 236);
+    /* border: 2px solid purple; */
+    border-radius: 50%;
+    cursor:pointer;
+    animation-name: ball;
+    animation-duration: 2s;
+    /* animation-direction: alternate; */
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.2, 0.19, 0.69, 0.73);
+}
+/* .myAni:hover {
+} */
 .ani {
     display: flex;
     margin: 30px;

@@ -9,6 +9,7 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="stylesheet" href="/ex/css/test.css">
 </head>
 
@@ -73,12 +74,25 @@
         <p class="origin">마우스를 호버하세요</p>
         <p class="hoverText">다른 텍스트가 나온다</p>
     </div>
+    <!-- form -->
+    <div>
+        <h3>색상 선택</h3>
+        <div>
+            빨강<input type="radio" name="select" value="red">
+        </div>
+        <div>
+            파랑<input type="radio" name="select" value="blue">
+        </div>
+        <textarea name="comment" cols="30" rows="5" placeholder="텍스트를 입력하세요."></textarea>
+    </div>
     <!-- aos animate library -->
     <div data-aos="fade-right" class="scrollAni">스크롤 애니메이션</div>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="/ex/js/test.js"></script>
 </body>
 
 

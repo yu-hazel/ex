@@ -1,0 +1,69 @@
+@charset "UTF-8";
+/* 현대 LC mobile */
+
+section:first-child .inner h2 {
+    font-size: 50px;
+}
+section:nth-of-type(2) {
+    height: 780px;
+    /* flex-shrink: 0; */
+}
+section:nth-of-type(2) .left {
+    height: 250px;
+    width: 100%;
+    align-self: stretch;
+    flex: 0 0 0;
+}
+section:nth-of-type(2) .left .inner600 {
+    gap: 50px;
+    width: 100%;
+    justify-content: flex-end;
+    align-self: stretch;
+    padding-top: 50px;
+}
+section:nth-of-type(2) .left .inner600 h2 {
+    font-size: 30px;
+    margin: 0;
+}
+section:nth-of-type(2) .left .inner600 img {
+    height: 120px;
+    /* align-self: stretch; */
+    object-fit: cover;
+    width: 100%;
+}
+section:nth-of-type(2) .right {
+    align-self: stretch;
+    padding: 0;
+    height: 530px;
+}
+section:nth-of-type(2) .right .inner600 {
+    justify-content: center;
+    height: 100%;
+    /* flex: 1 0 0; */
+}
+section:nth-of-type(2) .right .inner600 h2 {
+    font-size: 30px;
+}
+section:nth-of-type(2) .right .inner600 div:first-of-type {
+    font-size: 24px;
+}
+section:nth-of-type(3) .inner600 {
+    align-items: center;
+}
+section:nth-of-type(3) .text {
+    font-size: 24px;
+}
+section:nth-of-type(4) {
+    padding: 0;
+    height: 290px;
+}
+section:nth-of-type(4) div {
+    display: none;
+}
+section:nth-of-type(4) .inner {
+    padding: 80px 40px 0px 40px;
+    gap: 100px;
+}
+section:nth-of-type(4) .inner h2 {
+    font-size: 30px;
+}

@@ -133,27 +133,31 @@ button:hover {
     width: 987px;
     gap: 34px;
 }
-@keyframes slide {
-    0% { transform: translateX(0); }
-    33.33% { transform: translateX(-100%); }
-    66.66% { transform: translateX(-200%); }
-    100% { transform: translateX(0); }
-}
-.carousel {
-    width: 987px;
-    overflow: hidden;
-    /* position: relative; */
-    border-bottom: 1px solid #cacaca;
-}
-.slides {
-    display: flex;
-    /* transition: transform 1s ease; */
-    animation: slide 8s infinite;
-}
-.slide {
-    flex: 0 0 auto;
-    width: 987px;
+/* swiper */
+html, body {
     position: relative;
+    height: 100%;
+}
+.swiper {
+    width: 100%;
+    height: 507px;
+    z-index: 0;
+}
+.swiper-slide {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.swiper-pagination-bullet {
+    width: 60px;
+    height: 4px;
+    background-color: #D9D9D9;
+    margin: 0.2px;
+    border-radius: 0;
+}
+.swiper-pagination-bullet-active {
+    background-color: #0066FE;
 }
 .slideContent {
     margin: 0 0 63px 81px;

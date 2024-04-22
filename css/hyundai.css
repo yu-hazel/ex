@@ -20,7 +20,7 @@ section:first-child {
     justify-content: center;
     background: url(/ex/img/hyundai/sec01.png) lightgray 50% / cover no-repeat;
     margin: 0 auto;
-}
+} 
 section:first-child .inner {
     width: 960px;
     display: flex;

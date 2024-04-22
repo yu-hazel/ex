@@ -1,2 +1,103 @@
 @charset "UTF-8";
 /* 현대 LC tablet */
+
+section:first-child {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+section:first-child .inner {
+    width: 100%;
+    justify-content: flex-end;
+    gap: 20px;
+    align-items: center;
+}
+section:first-child .inner div {
+    display: none;
+}
+section:first-child .inner h2 {
+    font-size: 60px;
+    letter-spacing: 0;
+}
+section:first-child .inner h3 {
+    font-size: 30px;
+}
+section:nth-of-type(2) {
+    flex-direction: column;
+    height: 1130px;
+    align-items: center;
+    justify-content: center;
+}
+section:nth-of-type(2) .left {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+section:nth-of-type(2) .left .inner600 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+section:nth-of-type(2) .left .inner600 img {
+    position: static;
+}
+section:nth-of-type(2) .right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    padding: 0 72px;
+}
+section:nth-of-type(2) .right .inner600 {
+    padding: 0;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+section:nth-of-type(2) .right div {
+    text-align: center;
+}
+section:nth-of-type(3) {
+    width: 100%;
+    height: 565px;
+    flex-direction: column;
+    padding: 20px 0;
+    align-items: center;
+    /* flex-shrink: 0; */
+}
+section:nth-of-type(3) .left,
+section:nth-of-type(3) .right {
+    width: 100%;
+    padding: 0;
+}
+section:nth-of-type(3) .left .inner600,
+section:nth-of-type(3) .right .inner600 {
+    width: 100%;
+    height: 263px;
+    align-self: stretch;
+}
+section:nth-of-type(3) .right h2 {
+    display: none;
+}
+section:nth-of-type(3) .left .inner600 {
+    background-position: 90% 50%;
+    background-size: cover;
+}
+section:nth-of-type(3) .right .inner600 {
+    background-position: 90% 50%;
+    background-size: cover;
+}
+section:nth-of-type(4) {
+    /* height: 253px; */
+    align-items: center;
+    gap: 10px;
+    padding: 170px 40px 0;
+    background-position-x: 70%;
+}
+section:nth-of-type(4) .inner {
+    width: 100%;
+    height: 100%;
+}

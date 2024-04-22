@@ -1,0 +1,55 @@
+@charset "UTF-8";
+/* 한화에어로 태블릿 */
+/* * {
+    outline: 1px solid cornflowerblue;
+} */
+.inner {
+    width: 100%;
+    margin: 0 auto;
+}
+.sec01 .inner {
+    gap: 11px;
+    padding: 50px 40px 30px;
+}
+.inner:first-of-type > h2 {  
+    font-size: 30px;
+    font-weight: 400;
+}
+.inner:first-of-type > p {
+    font-size: 15px;
+    letter-spacing: -1.5px;
+}
+.sec02 .inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 50px 40px 0px 40px;
+}
+section:nth-of-type(2) {
+    background-size: auto 50%;
+}
+.card {
+    flex-direction: column;
+    gap: 25px;
+}
+article {
+    display: flex;
+    width: 100%;
+    height: 179px;
+    /* justify-content: center; */
+    align-items: flex-start;
+    align-self: stretch;
+}
+article img {
+    width: 200px;
+    height: 100%;
+}
+article div {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+article:nth-of-type(2),
+article:nth-of-type(3) {
+    padding: 0px;
+}

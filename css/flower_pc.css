@@ -13,12 +13,10 @@
 }
 
 /* 애스터리스크로 padding, margin값 초기화 or 아래 방법
-
 html, p, ul, ol, ul, h1, h2, ... {
     padding: 0;
     margin: 0;
 }
-
 */
 
 /* html { 아래처럼 :root 라고 써도 동일 */

@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+/* 꽃 tab */
+
+h1 {
+    font-size: 40px;
+}
+.inner {
+    width: 100%;
+    gap: 50px;
+}
+section {
+    height: auto;
+    width: 768px;
+    flex-direction: column;
+    gap: 53px;
+}
+.yellow .textBox {
+    order: 2;
+    width: 100%;
+}
+.yellow img {
+    order: 1;
+}

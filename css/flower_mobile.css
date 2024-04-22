@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+/* 꽃 mobile */
+
+h1 {
+    font-size: 30px;
+}
+.inner {
+    width: 100%;
+    padding: 0 10px;
+    gap: 20px;
+}
+section {
+    /* height: auto; */
+    width: auto;
+    gap: 10px;
+}
+section img {
+    width: 100%;
+}
+.textBox > h2 {
+    font-size: 30px;
+    padding-bottom: 5px;
+}
+.textBox p {
+    font-size: 15px;
+}

@@ -35,6 +35,12 @@ div.header {
     max-width: 100%;
     height: 18.97px;
 }
+.menu .logo_sprite {
+    width: 185px;
+    height: 19px;
+    background-image: url(/ex/img/naverlabs/logo_sprites.png);
+    background-position: -10px -10px;
+}
 .menu {
     display: flex;
     justify-content: center;

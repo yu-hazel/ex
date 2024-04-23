@@ -1,4 +1,14 @@
 @charset "UTF-8";
 /* 네이버랩스 tab~mobile 통합 */
 
-
+div.header {
+    background-color: #000000;
+}
+.menu .logo_sprite {
+    width: 127px;
+    height: 13px;
+    background-position: -10px -49px;
+}
+.menu ul {
+    display: none;
+}

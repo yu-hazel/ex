@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+
+section:nth-child(1) {
+  /* display: flex; */
+  /* width: auto; */
+  height: auto;
+  /* padding: 0px 240px; */
+  /* flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch; */
+}
+
+section:nth-child(1) .inner {
+  width: auto;
+}
+
+section:nth-child(1) .inner>p {
+  display: none;
+}
+
+select:nth-child(2) {
+  flex-direction: column;
+}
+
+section:nth-child(2) .left>.inner600>h2 {
+  align-items: center;
+}
+
+section:nth-child(2) .left>img {
+  position: static;
+}

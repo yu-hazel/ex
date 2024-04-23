@@ -24,6 +24,10 @@ article div {
     padding: 10px 30px 16px 30px;
     gap: 5px;
 }
+article img {
+    height: 176px;
+    object-fit: cover;
+}
 article div h2 {
     font-size: 25px;
     line-height: 40px;

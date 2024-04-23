@@ -22,3 +22,6 @@ section {
 .yellow img {
     order: 1;
 }
+.textBox {
+    padding: 0 20px;
+}

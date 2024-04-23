@@ -53,3 +53,6 @@ article:nth-of-type(2),
 article:nth-of-type(3) {
     padding: 0px;
 }
+/* section:nth-of-type(2) {
+    background-size: 100% 80%;
+} */

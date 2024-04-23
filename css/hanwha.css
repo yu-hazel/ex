@@ -76,8 +76,8 @@ article:nth-of-type(3) {
 }
 section:nth-of-type(2) {
     background: url(/ex/img/hanwha/sec02.png) no-repeat;
-    background-position: 50% 0;
-    background-size: contain;
+    background-position: 100% 0;
+    background-size: 100% 50%;
     /* background: url(/ex/img/hanwha/sec02.png) no-repeat 50% 0 / cover; */
     /* background-size: 100%; */
 }

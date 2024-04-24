@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         pagination: {
             el: ".swiper-pagination",
-            clickable: true,
+            type: "progressbar",
         },
         navigation: {
             nextEl: ".swiper-button-next",

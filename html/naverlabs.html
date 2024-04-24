@@ -6,26 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Naver Labs</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://kit.fontawesome.com/650017f151.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/ex/css/naverlabs.css">
     <link rel="stylesheet" media="all and (min-width: 360px) and (max-width:1199px)" href="/ex/css/naverlabs_small.css">
 </head>
 
 <body>
-    <div class="header">
-        <nav class="menu">
+    <header>
+        <a href="https://www.naverlabs.com" class="logo_sprite">네이버랩스 로고</a>
+        <div class="menu">
             <!-- <img src="/ex/img/naverlabs/logo.png" alt="로고"> -->
-            <a href="https://www.naverlabs.com" class="logo_sprite"></a>
-            <ul>
-                <li>STORY</li>
-                <li>PROJECTS</li>
-                <li>LOG</li>
-                <li>PUBLICATIONS</li>
-                <li>CAREER</li>
-                <li>CONTACT</li>
-            </ul>
-            <div class="eng">ENGLISH</div>
-        </nav>
-    </div>
+            <!-- 로고는 누르면 어디로 가는 것이기 때문에 a태그로 만드는 것이 좋다 -->
+            <span>STORY</span>
+            <span>PROJECTS</span>
+            <span>LOG</span>
+            <span>PUBLICATIONS</span>
+            <span>CAREER</span>
+            <span>CONTACT</span>
+            <i class="fa-solid fa-xmark menuClose"></i>
+        </div>
+        <div class="eng">ENGLISH</div>
+    </header>
     <div class="sec">
         <div class="inner">
             <aside>KEYWORDS
@@ -52,21 +53,30 @@
                             <img class="newsThumbnail" src="/ex/img/naverlabs/slide01.png" alt="슬라이드1">
                             <div class="slideContent">
                                 <h3>로봇을 위한 AI, 크로코(CROCO)와 더스터(DUSt3R)</h3>
-                                <p>2024.03.25 | NAVER LABS</p>
+                                <div class="dateInfo">
+                                    <span>2024.03.25</span>
+                                    <span>NAVER LABS</span>
+                                </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <img class="newsThumbnail" src="/ex/img/naverlabs/slide02.png" alt="슬라이드2">
                             <div class="slideContent">
                                 <h3>1784 로봇 서비스의 새로운 실험, 루키드롭</h3>
-                                <p>2024.03.25 | NAVER LABS</p>
+                                <div class="dateInfo">
+                                    <span>2024.03.25</span>
+                                    <span>NAVER LABS</span>
+                                </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <img class="newsThumbnail" src="/ex/img/naverlabs/slide03.png" alt="슬라이드3">
                             <div class="slideContent">
                                 <h3>아크마인드, 세계 최초의 웹 플랫폼 기반 로봇 전용 OS</h3>
-                                <p>2024.03.25 | NAVER LABS</p>
+                                <div class="dateInfo">
+                                    <span>2024.03.25</span>
+                                    <span>NAVER LABS</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -83,7 +93,12 @@
                             <p>사람의 두 눈은 약 6~7cm 떨어져 있습니다. 그래서 두 눈이 약간 다른 각도로 세상을 바라보게 되죠. 이를 양안시차(binocular parallax)라
                                 합니다.
                                 사람은 양안시차를 뇌에서 재구성하여 세상을 3차원 입체로 지각하게 됩니다. 네이버랩스 유럽에선 이 원리를 로봇 AI에 적용하고 있습니다.</p>
-                            <p>2024.03.25 | NAVER LABS</p>
+                            <div class="dateInfo">
+                                <span>2024.03.25</span>
+                                <span>NAVER LABS</span>
+                            </div>
+                            <!-- 이거 수정하기 <span> 두개 & 가운데 | 는 가상요소로 -->
+                            <!-- <p>2024.03.25 | NAVER LABS</p> -->
                         </div>
                     </div>
                     <div class="article keywords">
@@ -97,7 +112,10 @@
                             <p>사람의 두 눈은 약 6~7cm 떨어져 있습니다. 그래서 두 눈이 약간 다른 각도로 세상을 바라보게 되죠. 이를 양안시차(binocular parallax)라
                                 합니다.
                                 사람은 양안시차를 뇌에서 재구성하여 세상을 3차원 입체로 지각하게 됩니다. 네이버랩스 유럽에선 이 원리를 로봇 AI에 적용하고 있습니다.</p>
-                            <p>2024.03.25 | NAVER LABS</p>
+                            <div class="dateInfo">
+                                <span>2024.03.25</span>
+                                <span>NAVER LABS</span>
+                            </div>
                         </div>
                     </div>
                     <div class="article keywords">
@@ -117,14 +135,18 @@
                 <li class="social linkedin">Linkedin</li>
             </ul>
             <div class="corpArea">
-                <ul class="corpList">
-                    <li>개인정보 처리방침</li>
-                    <li>기업윤리 센터</li>
-                    <li>©NAVER LABS Corp.</li>
-                </ul>
-                <div class="siteButton">
-                    <div>사이트 바로가기</div>
-                    <img src="/ex/img/naverlabs/dropdown.png" alt>
+                <!-- corpList 안에 select가 있어야 해서, ul이 아닌 div로 묶는 게 좋다.
+                왜냐하면 ul 안에는 li만 올 수 있으므로 -->
+                <div class="corpList">
+                    <span>개인정보 처리방침</span>
+                    <span>기업윤리 센터</span>
+                    <span>&copy; NAVER LABS Corp.</span>
+                    <select class="siteButton">
+                        <option value="1">사이트 바로가기</option>
+                        <option value="2">NAVER</option>
+                        <option value="3">NAVERLABS Europe</option>
+                        <!-- <img src="/ex/img/naverlabs/dropdown.png" alt> -->
+                    </select>
                 </div>
             </div>
         </div>

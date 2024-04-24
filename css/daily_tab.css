@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+/* 데일리금융 tab */
+
+.inner {
+    width: 100%;
+}
+.sec02 {
+    margin: 0;
+}
+article, img, .box > div, .longPicture {
+    height: 100%;
+    flex: 1 1 30%;
+}

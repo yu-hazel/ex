@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* outline: 1px solid cornflowerblue; */
+}
+.tab01 {
+    list-style: none;
+    width: 100%;
+    height: 300px;
+    position: relative;
+    display: flex;
+}
+/* tab01의 input자식 중 type이 radio인 속성 */
+.tab01 input[type="radio"] {
+    display: none;
+}
+/* 라디오버튼 대신 label이 일을 해준다! */
+/* 아래부터는 디자인 */
+.tab01 > li > label {
+    padding: 10px 30px;
+    background: #e0e0e0;
+    border-radius: 10px;
+}
+/* 비활성화된 탭 3개 */
+.tab01 > li > div {
+    min-width: 600px;
+    height: 100%;
+    padding: 20px;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    background: cornflowerblue;
+    display: none; 
+    /* 비활성 상태일 땐 안 보이게 할 거라서 display: none */
+}
+/* div의 position의 기준은 li가 아니라 ul! */
+.tab01 input[type="radio"]:checked + label {
+    background-color: cornflowerblue;
+    color: #fff;
+    font-weight: 600;
+}
+/* 선택자 확인 잘하기 */
+.tab01 input[type="radio"]:checked + label + div {
+    display: block;
+    color: #fff;
+}
+/* .tab01 input[type="radio"]:checked ~ div */
+

@@ -8,10 +8,12 @@ header {
     min-width: 640px;
     height: 50px;
     background-color: #000000;
-    /* position: fixed; */
+    position: fixed;
+    z-index: 200;
+    /* z-index의 값을 줄 때는 일정한 단위로 주는 것이 좋다 (10단위, 100단위...)
+    왜? : 혹시라도 그 사이에 다른 요소들이 들어올 수 있으므로!! */
     top: 0;
     left: 0;
-    /* z-index: 200; */
 }
 header a.logo_sprite {
     width: 127px;
@@ -30,7 +32,7 @@ header .hamburger {
     right: 20px;
     cursor: pointer;
 }
-.menu.show {
+header .menu.show {
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -44,15 +46,50 @@ header .hamburger {
     height: 100vh;
     background-color: #0066FE;
     z-index: 100;
+    /* .menu.show의 부모인 header의 z-index값이 선언되어 있지 않아서 계속 aside가 침범했던 것. header에 position 선언 + aside보다 높은 z-index선언으로 해결 */
 }
-.menu.show span {
+header .menu.show span {
     font-size: 50px;
     font-weight: 700;
     letter-spacing: 3px;
     margin-right: 26px;
     color: #fff;
+    position: relative;
 }
-
+header .menu.show span::after {
+    content: "";
+    position: absolute;
+    left: -1px;
+    bottom: -8px;
+    width: 0;
+    height: 5px;
+    background-color: #fff;
+    transition: width 0.3s;
+}
+header .menu.show span:hover::after {
+    width: 100%;
+}
+header .menu .menuClose {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+}
+header .menu .eng {
+    display: block;
+    margin: 0;
+    font-size: 25px;
+    border-color: #fff;
+    color: #fff;
+}
+header .menu .eng:hover {
+    background-color: #fff;
+    color: #0066FE;
+    border-color: #0066FE;
+}
 .sec {
     margin: 0;
     width: 100%;

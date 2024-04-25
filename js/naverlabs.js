@@ -19,3 +19,16 @@ document.addEventListener('DOMContentLoaded', function () {
         },
     });
 });
+
+
+// 햄버거 버튼을 클릭했을 때 메뉴를 토글하는 함수
+function toggleMenu() {
+    var menu = document.querySelector(".menu");
+    menu.classList.toggle("show");
+}
+
+// 닫기 버튼을 클릭했을 때 메뉴를 숨기는 함수
+function closeMenu() {
+    var menu = document.querySelector(".menu");
+    menu.classList.remove("show");
+}

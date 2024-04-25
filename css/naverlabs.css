@@ -31,8 +31,7 @@ header {
     background-color: #fff;
     position: fixed;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     z-index: 1;
 }
 .logo_sprite {
@@ -73,7 +72,7 @@ header {
 .menu span:hover::after {
     width: 100%;
 }
-.menu span:last-child {
+.menu span:last-of-type {
     margin-right: 0;
 }
 .eng {
@@ -93,6 +92,9 @@ header {
     color: #fff;
 }
 header .menu .menuClose {
+    display: none;
+}
+header .hamburger {
     display: none;
 }
 .sec {

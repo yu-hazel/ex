@@ -49,3 +49,37 @@
 }
 /* .tab01 input[type="radio"]:checked ~ div */
 
+.dropdown{
+    position : relative;
+    display : inline-block;
+}
+
+.dropdown-content{
+    display : none;
+    position : absolute;
+    z-index : 1; /*다른 요소들보다 앞에 배치*/
+}
+
+.dropdown-content a{
+    display : block;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.menuSet {
+    position: relative;
+}
+.subMenu {
+    display: none;
+    position: absolute;
+    z-index: 1;
+}
+.subMenu li {
+    display: block;
+}
+.menuSet:hover .subMenu {
+    display: block;
+}
+

@@ -12,6 +12,7 @@
     height: 300px;
     position: relative;
     display: flex;
+    /* flex-direction: column; */
 }
 /* tab01의 input자식 중 type이 radio인 속성 */
 .tab01 input[type="radio"] {

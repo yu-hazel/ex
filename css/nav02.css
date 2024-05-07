@@ -1,0 +1,83 @@
+@charset "UTF-8";
+/* nav02 css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    min-width: 1300px;
+}
+ul, li {
+    list-style-type: none;
+}
+a:link,
+a:visited {
+    text-decoration: none;
+    color: #fff;
+}
+h1, h2 {
+    background-color: #fff;
+    position: relative;
+    z-index: 10;
+}
+ul.menu {
+    height: 80px;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    background: cornflowerblue;
+    color: #fff;
+}
+ul.menu > li
+/* 직계 li만 선택 */
+{
+    display: inherit;
+    flex-direction: column;
+    width: 200px;
+    /* 반응형에서는 widht를 비율로 */
+    height: 100%;
+    border-right: 1px solid rgba(255,255,255,0.5);
+}
+ul.menu > li:first-child {
+    border-left : 1px solid rgba(255,255,255,0.5);
+}
+ul.menu > li > a {
+    height: 100%;
+    display: inherit;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 100%;
+    position: relative;
+    z-index: 10;
+    background: cornflowerblue;
+}
+ul.menu > li:hover > a {
+    background: rgba(73, 130, 236);
+}
+ul.menu > li > .subMenu {
+    background: rgb(149, 183, 248);
+    font-size: 1.2rem;
+    transform: translateY(-100%);
+    /* 내 몸뚱아리만큼 올라가 있어라 */
+    transition: 0.3s;
+    position: relative;
+    z-index: 0;
+}
+ul.menu > li > .subMenu > li {
+    height: 50px;
+}
+ul.menu > li > .subMenu > li > a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+}
+ul.menu > li > .subMenu > li:hover {
+    background: rgba(57, 118, 232, 0.7);
+}
+ul.menu > li:hover > .subMenu {
+    transform: translateY(0);
+}

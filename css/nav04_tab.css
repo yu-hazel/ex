@@ -1,0 +1,72 @@
+@charset "UTF-8";
+/* nav04 tab css */
+body {
+    min-width: 480px;
+}
+.icoMenu, .icoClose {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.icoClose {
+    display: none;
+}
+nav {
+    height: 40px;
+    justify-content: flex-end;
+    padding: 0 20px;
+}
+nav::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 40px;
+    right: 0;
+    z-index: 100;
+}
+ul.menu {
+    padding-top: 30px;
+    position: fixed;
+    top: 40px;
+    right: 0;
+    width: 200px;
+    height: 100vh;
+    flex-direction: column;
+    background-color: cornflowerblue;
+    z-index: 200;
+    transform: translateX(100%);
+    transition: 0.3s;
+}
+ul.menu.active {
+    transform: translateX(0);
+}
+ul.menu::before {
+    display: none;
+}
+ul.menu > li {
+    /* li가 flex인 상태에서 조정하고 싶다면 ul.menu > li > a에다 flex: 0 0 auto; 를 줘야 한다. */
+    display: block;
+    height: auto;
+    flex: 0 1 auto;
+    border-right: none;
+}
+ul.menu > li:first-child {
+    border-left: none;
+}
+ul.menu > li > a {
+    height: 50px;
+    display: flex;
+}
+ul.menu > li > .subMenu {
+    height: auto;
+    transform: initial;
+    /* initial: 초기화 */
+    display: none;
+}
+ul.menu > li:hover .subMenu {
+    position: relative;
+    top: 0;
+    display: block;
+}

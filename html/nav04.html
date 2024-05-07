@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nav04</title>
+    <link rel="stylesheet" href="/ex/css/nav04.css">
+    <link rel="stylesheet" media="all and (max-width:1024px)" href="/ex/css/nav04_tab.css">
+</head>
+
+<body>
+    <nav>
+        <ul class="menu">
+            <li>
+                <a href="#">회사 소개</a>
+                <ul class="subMenu">
+                    <li><a href="#">토목</a></li>
+                    <li><a href="#">플랜트</a></li>
+                    <li><a href="#">건축</a></li>
+                    <li><a href="#">주택</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">사업 분야</a>
+                <ul class="subMenu">
+                    <li><a href="#">메뉴01</a></li>
+                    <li><a href="#">메뉴02</a></li>
+                    <li><a href="#">메뉴03</a></li>
+                    <li><a href="#">메뉴04</a></li>
+                    <li><a href="#">메뉴05</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">홍보 센터</a>
+                <ul class="subMenu">
+                    <li><a href="#">메뉴01</a></li>
+                    <li><a href="#">메뉴02</a></li>
+                    <li><a href="#">메뉴03</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">고객 센터</a>
+                <ul class="subMenu">
+                    <li><a href="#">메뉴01</a></li>
+                    <li><a href="#">메뉴02</a></li>
+                </ul>
+            </li>
+        </ul>
+        <span class="material-symbols-outlined icoMenu" onclick="toggleMenu()">
+            menu
+        </span>
+        <span class="material-symbols-outlined icoClose" onclick="toggleMenu()">
+            close
+        </span>
+    </nav>
+    <!-- <h1>pure css를 통한 nav 구현 04</h1>
+    <h2>반응형 메뉴 구현</h2> -->
+    <script src="/ex/js/nav.js"></script>
+</body>
+
+</html>

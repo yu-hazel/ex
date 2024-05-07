@@ -1,0 +1,81 @@
+@charset "UTF-8";
+/* nav css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    min-width: 1300px;
+}
+ul, li {
+    list-style-type: none;
+}
+a:link,
+a:visited {
+    text-decoration: none;
+    color: #fff;
+}
+ul.menu {
+    height: 80px;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    background: cornflowerblue;
+    color: #fff;
+}
+ul.menu > li
+/* 직계 li만 선택 */
+{
+    display: inherit;
+    flex-direction: column;
+    width: 200px;
+    /* 반응형에서는 widht를 비율로 */
+    height: 100%;
+    border-right: 1px solid rgba(255,255,255,0.5);
+}
+ul.menu > li:first-child {
+    border-left : 1px solid rgba(255,255,255,0.5);
+}
+ul.menu > li > a {
+    height: 100%;
+    display: inherit;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 100%;
+    /* 쪼그라드는 것을 방지하기 위함 (안 늘어나고 안 줄어들 거다) */
+}
+ul.menu > li:hover > a {
+    /* 이것도 a:hover가 아닌 li에 호버했을 때 a가.. 로 선택자를 지정해야 함 */
+    background: rgba(73, 130, 236, 0.8);
+}
+ul.menu > li > .subMenu {
+    background: rgb(149, 183, 248);
+    font-size: 1.2rem;
+    display: none;
+}
+ul.menu > li > .subMenu > li {
+    height: 50px;
+}
+ul.menu > li > .subMenu > li > a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+}
+/* a에만 마우스를 가져다 댈 때 pointer가 되는 게 아니라, li 전체에 pointer를 주기 위해 a를 펼침 */
+ul.menu > li > .subMenu > li:hover {
+    background: rgba(57, 118, 232, 0.7);
+}
+ul.menu > li:hover > .subMenu {
+    /* li에 호버하면 그 '직계' 서브메뉴가 나오게 하기 */
+    display: block;
+}
+/* 시각적으로 확인했을 때 대메뉴에 마우스를 올리면 하위메뉴가 나온다고 생각하여 a에 hover를 걸지만, 호버의 범위가 a에 한정적이기 때문에 .subMenu로 마우스를 이동하면 호버 이벤트가 해제됨. -> 서브메뉴도 사라짐!
+a와 .subMenu를 모두 담은 li에다 hover 이벤트를 걸어야 한다. */
+/* ul.menu > li > a:hover ~ subMenu {
+    display: block;
+    내가 항상 하던 실수 ㅠ 
+} */

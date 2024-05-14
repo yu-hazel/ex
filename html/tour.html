@@ -9,18 +9,30 @@
 
 <body>
     <h1>충북관광 API 가져오기</h1>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <div id="content">청주</div>
     <script>
-        $.ajax({
-            method: "GET",
-            url: "https://tour.chungbuk.go.kr/openapi/tourInfo/attr.do",
-            // data: { query: "미움받을 용기" },
-            // headers: { Authorization: "KakaoAK f3c577d2322766855ce59441712d02c0" }
-        })
-            .done(function (msg) {
-                console.log(msg);
-            });
+        const proxyURL = 'https://api.allorigins.win/get?url=';
+        const apiURL = encodeURIComponent('https://tour.chungbuk.go.kr/openapi/tourInfo/attr.do');
+
+        async function fetchData() {
+            try {
+                const response = await fetch(proxyURL + apiURL);
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+
+                const data = await response.json();
+                // All Origins 서비스는 데이터를 'contents' 속성에 반환합니다.
+                const actualData = JSON.parse(data.contents);
+                console.log(actualData);
+                document.getElementById('content').innerText = JSON.stringify(actualData, null, 2);
+            } catch (error) {
+                console.error('Fetch operation failed: ', error);
+            }
+        }
+
+        fetchData();
     </script>
 </body>
 

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <title>슈파베이스</title>
+</head>
+
+<body>
+    <h1>Supabase Auth</h1>
+    <input type="button" value="login" id="login" />
+
+    <script>
+        const supabaseUrl = 'https://vovzpunshmcodmkletaw.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZvdnpwdW5zaG1jb2Rta2xldGF3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTgxMDg5MzUsImV4cCI6MjAzMzY4NDkzNX0.aVXi_AbLx-AGNwWVa0MB-WiNrkht2Eq0ECnBwDds2Kc';
+        const client = supabase.createClient(supabaseUrl, supabaseKey);
+
+
+        async function signInWithGithub() {
+            const { data, error } = await client.auth.signInWithOAuth({
+                provider: "github",
+                options: {
+                    redirectTo: "http://127.0.0.1:5500/ex/html/index2.html",
+                },
+            });
+        }
+        document
+            .querySelector("#login")
+            .addEventListener("click", signInWithGithub);
+    </script>
+    <input type="button" value="logout" id="logout" />
+    <script>
+        async function checkLogin() {
+            const authInfo = await client.auth.getSession();
+            const session = authInfo.data.session;
+            document.querySelector("#login").style.display = "none";
+            document.querySelector("#logout").style.display = "none";
+            if (session === null) {
+                document.querySelector("#login").style.display = "inline";
+            } else {
+                document.querySelector("#logout").style.display = "inline";
+            }
+        }
+        checkLogin();
+    </script>
+    <script>
+        async function signOut() {
+            const { error } = await client.auth.signOut();
+            checkLogin();
+        }
+        document.querySelector("#logout").addEventListener("click", signOut);
+    </script>
+
+</body>
+
+</html>

@@ -5,14 +5,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>충북관광API 테스트</title>
+    <style>
+        #content {
+            width: 1200px;
+            height: 400px;
+        }
+
+        #location {
+            font-size: 24px;
+            color: tomato;
+            font-weight: 700;
+        }
+    </style>
 </head>
 
 <body>
     <h1>충북관광 API 가져오기</h1>
-    <div id="content">청주</div>
+    <div id="content">결과는 여기에</div>
+    <br>
+    <img id="image" src="#" alt>
+    <img id="image2" src="#" alt>
+
+    <!--
+        의도 : img 태그 안에 들어갈 src를 js로 대신하려고 했음.
+        결과 : 화면에 제대로 출력은 되지만 validation 체크에서는 얄짤없이 걸림. 그렇다면 이런 식으로 api의 이미지를 호출해 쓰지 않는다는 것인가?
+        시도 : src="#"로 validation 체크는 넘어가되 api에서 넘겨받은 주소로 이미지는 제대로 뜨게 함. 이게 맞을까?
+        엑박 같은 이미지를 일단 박아넣자! (스켈레톤 이미지)
+
+        사진이 구리니 작은 사이즈로 ....
+        혹시라도 다른 api 있으면 찾아보자!
+    -->
+
+    <p>화질은 진짜 구려서 못쓰겄다</p>
+    <div id="location">주소는 여기에</div>
     <script>
+
+        // 어디선가 주워 온 코드들로 누덕누덕 기워 만들기는 했으나, api 호출하기 등으로 검색해 살펴 보면 ajax를 쓰는 사람들이 많음.
+        // ajax는 개념일 뿐이지 제이쿼리 아래 있는 게 아님
+        // 질문 1 : 그렇다면 이 방법은 효율이 좋지 않은 것인지?
+        // 질문 2 : json 형태의 api를 호출하여 웹에 출력하기 위해서는 여러 방법이 있는 것인지? -> 그럼 우리가 배울 방법은 뭔가요?
+
         const proxyURL = 'https://api.allorigins.win/get?url=';
-        const apiURL = encodeURIComponent('https://tour.chungbuk.go.kr/openapi/tourInfo/attr.do');
+        const apiURL = encodeURIComponent('https://tour.chungbuk.go.kr/openapi/tourInfo/attr.do?searchCnd=tourNm&searchKrwd=%EB%8B%A8%EC%96%91&PageUnit=15');
 
         async function fetchData() {
             try {
@@ -21,12 +55,23 @@
                 if (!response.ok) {
                     throw new Error('Network response was not ok ' + response.statusText);
                 }
-
                 const data = await response.json();
-                // All Origins 서비스는 데이터를 'contents' 속성에 반환합니다.
                 const actualData = JSON.parse(data.contents);
                 console.log(actualData);
-                document.getElementById('content').innerText = JSON.stringify(actualData, null, 2);
+                // document.getElementById('content').innerText = JSON.stringify(actualData, null, 2);
+                console.log(actualData.result[0].thumbImg);
+
+                const imageUrl = actualData.result[7].thumbImg;
+                document.getElementById('image').src = imageUrl;
+
+                const imageUrl2 = actualData.result[3].thumbImg;
+                document.getElementById('image2').src = imageUrl2;
+
+                document.getElementById('content').style.backgroundImage = `url(${imageUrl})`;
+                // document.getElementById('content').style.backgroundSize = 'cover';
+
+                const location01 = actualData.result[5].intrcn
+                document.getElementById('location').innerText = location01;
             } catch (error) {
                 console.error('Fetch operation failed: ', error);
             }

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한국관광공사 api 테스트</title>
+</head>
+
+<body>
+    <div id="result01">결과 여기에</div>
+    <script>
+        async function fetchData() {
+            const url = 'https://apis.data.go.kr/B551011/KorService1/searchKeyword1?serviceKey=lRV%2FlpXdNpwpCFym7HQ65ovQo3pq%2FzfGGfzh4HcOftxJ6%2BtB5FQfNyqIZj4IYJQNU%2FS2UPpRWaYf6CMSL7Ablg%3D%3D&MobileApp=AppTest&MobileOS=ETC&pageNo=1&numOfRows=29&listYN=Y&arrange=A&contentTypeId=12&keyword=%EB%8B%A8%EC%96%91&_type=json';
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.log('Error fetching data:', error);
+            }
+        }
+
+        (async () => {
+            const result = await fetchData();
+            console.log(result);
+            const data = result.response.body.items.item[0].firstimage2
+            result01.innerText = data;
+        })();
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>책 api 2트</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <h1>제발 좀 돼라</h1>
+    <script>
+        // $.ajax({
+        //     method: "GET",
+        //     url: "https://dapi.kakao.com/v3/search/book?target=title",
+        //     data: { query: "java" },
+        //     headers: { Authorization: "KakaoAk 5aeaa95c36b9b86e931ad9598600ced2" }
+        // })
+        //     .done(function (msg) {
+        //         console.log("Data Saved: ", msg);
+        //     })
+        //     .fail(function (jqXHR, textStatus, errorThrown) {
+        //         console.error("Error: ", textStatus, errorThrown);
+        //     });
+
+        async function fetchData() {
+            try {
+                const response = await axios.get(
+                    "https://thingproxy.freeboard.io/fetch/https://openapi.naver.com/v1/search/movie.json",
+                    {
+                        params: { query: "이름" },
+                        headers: {
+                            "X-Naver-Client-Id": "LzQrQC8j5ue3yd04K9UB",
+                            "X-Naver-Client-Secret": "9oJA3_nJSw",
+                        },
+                    }
+                );
+                console.log('response', response.data.items);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        // 함수를 호출하여 데이터 가져오기
+        fetchData();
+
+    </script>
+</body>
+
+</html>

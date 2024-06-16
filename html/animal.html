@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>경기도 동물병원 조회</title>
+    <link rel="stylesheet" href="/ex/css/animal.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>🐶경기도 동물병원 조회🐱</h1>
+        <p>사랑하는 내 반려가족을 위해 찾아봐요 🔍</p>
+        <div class="searchWrapper">
+            <input type="text" id="input" placeholder="시군명을 입력하세요 (예: 수원시)">
+            <button onclick="searchAnimalHospitals()">검색</button>
+        </div>
+        <div class="resultsWrapper">
+            <div id="mapResults"></div>
+            <div class="pagenationWrapper">
+                <div id="results"></div>
+                <div class="pagination" id="pagination"></div>
+            </div>
+        </div>
+    </div>
+    <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a62d3836bded4f7ea62b624e4fc5ff75&libraries=clusterer"></script>
+    <script src="/ex/js/animal.js"></script>
+</body>
+
+</html>

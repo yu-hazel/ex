@@ -1,0 +1,73 @@
+@charset "UTF-8";
+/* 동물병원 css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* outline: 1px solid cornflowerblue; */
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    position: relative;
+    padding: 50px 0;
+}
+.searchWrapper {
+    position: relative;
+}
+#input {
+    display: flex;
+    width: 350px;
+    height: 50px;
+    padding: 0 20px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+}
+button {
+    border: none;
+    width: 50px;
+    height: 25px;
+    border-radius: 20px;
+    transition: 0.25s;
+}
+button:hover {
+    background-color: rgb(255, 210, 113);
+}
+.searchWrapper button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+}
+.resultsWrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+#mapResults {
+    width: 800px;
+    height: 800px;
+}
+#results {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.pagination button {
+    margin: 0 5px;
+    padding: 5px 10px;
+}
+.pagination .disabled {
+    color: grey;
+    pointer-events: none;
+}

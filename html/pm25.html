@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미세먼지 현황</title>
+</head>
+
+<body>
+    <script>
+        const ServiceKey = `lRV%2FlpXdNpwpCFym7HQ65ovQo3pq%2FzfGGfzh4HcOftxJ6%2BtB5FQfNyqIZj4IYJQNU%2FS2UPpRWaYf6CMSL7Ablg%3D%3D`;
+
+        const url = `https://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?sidoName=%EA%B2%BD%EA%B8%B0&pageNo=1&numOfRows=100&returnType=json&serviceKey=${ServiceKey}&ver=1.0`;
+
+        fetch(url)
+            .then(result => result.json())
+            .then(data => {
+                const actualData = data.response.body.items
+                console.log(actualData)
+                // console.log(data.response.body.items)
+                console.log(`${actualData[0].sidoName} ${actualData[0].stationName}의 현재 미세먼지 농도 : ${actualData[0].pm25Value}`)
+            })
+            .catch(err => console.log(err))
+    </script>
+</body>
+
+</html>

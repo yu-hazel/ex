@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>야구 경기 기록</title>
+    <link rel="stylesheet" href="/ex/css/baseball.css">
+</head>
+
+<body>
+    <button id="newRecordBtn">새 글 작성하기</button>
+
+    <div id="recordModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="recordForm">
+                <label for="date">날짜:</label>
+                <input type="date" id="date" name="date" required><br>
+
+                <label for="team1">팀 1:</label>
+                <input type="text" id="team1" name="team1" required><br>
+
+                <label>팀 1 라인업:</label>
+                <table>
+                    <tr>
+                        <th>선수</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="team1Player1" name="team1Player1"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="team1Player2" name="team1Player2"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="team1Player3" name="team1Player3"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="team1Player4" name="team1Player4"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="team1Player5" name="team1Player5"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="team1Player6" name="team1Player6"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="team1Player7" name="team1Player7"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="team1Player8" name="team1Player8"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="team1Player9" name="team1Player9"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="team1Pitcher" name="team1Pitcher" placeholder="선발 투수"></td>
+                    </tr>
+                </table><br>
+
+                <label for="team2">팀 2:</label>
+                <input type="text" id="team2" name="team2" required><br>
+
+                <label>팀 2 라인업:</label>
+                <table>
+                    <tr>
+                        <th>선수</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="team2Player1" name="team2Player1"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="team2Player2" name="team2Player2"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="team2Player3" name="team2Player3"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="team2Player4" name="team2Player4"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="team2Player5" name="team2Player5"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="team2Player6" name="team2Player6"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="team2Player7" name="team2Player7"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="team2Player8" name="team2Player8"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="team2Player9" name="team2Player9"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="team2Pitcher" name="team2Pitcher" placeholder="선발 투수"></td>
+                    </tr>
+                </table><br>
+
+                <label>스코어:</label>
+                <table id="score">
+                    <tr>
+                        <th>회차</th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                        <th>8</th>
+                        <th>9</th>
+                        <th>10</th>
+                        <th>11</th>
+                        <th>12</th>
+                    </tr>
+                    <tr>
+                        <td>팀 1</td>
+                        <td><input type="text" id="team1Score1" name="team1Score1"></td>
+                        <td><input type="text" id="team1Score2" name="team1Score2"></td>
+                        <td><input type="text" id="team1Score3" name="team1Score3"></td>
+                        <td><input type="text" id="team1Score4" name="team1Score4"></td>
+                        <td><input type="text" id="team1Score5" name="team1Score5"></td>
+                        <td><input type="text" id="team1Score6" name="team1Score6"></td>
+                        <td><input type="text" id="team1Score7" name="team1Score7"></td>
+                        <td><input type="text" id="team1Score8" name="team1Score8"></td>
+                        <td><input type="text" id="team1Score9" name="team1Score9"></td>
+                        <td><input type="text" id="team1Score10" name="team1Score10"></td>
+                        <td><input type="text" id="team1Score11" name="team1Score11"></td>
+                        <td><input type="text" id="team1Score12" name="team1Score12"></td>
+                    </tr>
+                    <tr>
+                        <td>팀 2</td>
+                        <td><input type="text" id="team2Score1" name="team2Score1"></td>
+                        <td><input type="text" id="team2Score2" name="team2Score2"></td>
+                        <td><input type="text" id="team2Score3" name="team2Score3"></td>
+                        <td><input type="text" id="team2Score4" name="team2Score4"></td>
+                        <td><input type="text" id="team2Score5" name="team2Score5"></td>
+                        <td><input type="text" id="team2Score6" name="team2Score6"></td>
+                        <td><input type="text" id="team2Score7" name="team2Score7"></td>
+                        <td><input type="text" id="team2Score8" name="team2Score8"></td>
+                        <td><input type="text" id="team2Score9" name="team2Score9"></td>
+                        <td><input type="text" id="team2Score10" name="team2Score10"></td>
+                        <td><input type="text" id="team2Score11" name="team2Score11"></td>
+                        <td><input type="text" id="team2Score12" name="team2Score12"></td>
+                    </tr>
+                </table><br>
+
+                <label for="comments">감상:</label>
+                <textarea id="comments" name="comments"></textarea><br>
+
+                <button type="submit">기록 저장</button>
+            </form>
+        </div>
+    </div>
+    <div id="recordsList">
+        <h2>저장된 기록</h2>
+        <ul id="recordsUl"></ul>
+    </div>
+    <script src="/ex/js/baseball.js"></script>
+</body>
+
+</html>

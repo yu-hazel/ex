@@ -1,23 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <title>슈파베이스</title>
 </head>
 
 <body>
     <h1>Supabase Auth</h1>
-    <input type="button" value="login" id="login" />
+    <input type="button" value="login" id="login">
 
     <script>
         const supabaseUrl = 'https://vovzpunshmcodmkletaw.supabase.co';
         const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZvdnpwdW5zaG1jb2Rta2xldGF3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTgxMDg5MzUsImV4cCI6MjAzMzY4NDkzNX0.aVXi_AbLx-AGNwWVa0MB-WiNrkht2Eq0ECnBwDds2Kc';
         const client = supabase.createClient(supabaseUrl, supabaseKey);
-
-
         async function signInWithGithub() {
             const { data, error } = await client.auth.signInWithOAuth({
                 provider: "github",
@@ -30,7 +28,7 @@
             .querySelector("#login")
             .addEventListener("click", signInWithGithub);
     </script>
-    <input type="button" value="logout" id="logout" />
+    <input type="button" value="logout" id="logout">
     <script>
         async function checkLogin() {
             const authInfo = await client.auth.getSession();

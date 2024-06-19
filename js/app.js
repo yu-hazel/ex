@@ -85,7 +85,7 @@ function displayResults(data) {
             resultsDiv.appendChild(bookItem);
         });
     } else {
-        resultsDiv.textContent = 'No books found.';
+        resultsDiv.textContent = '검색어에 해당하는 책이 없습니다.';
     }
 }
 
@@ -93,6 +93,15 @@ document.getElementById('searchButton').addEventListener('click', () => {
     const query = document.getElementById('input').value;
     console.log('Search query:', query);
     fetchBookData(query);
+});
+
+document.getElementById('input').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault(); // 기본 폼 제출 막기
+        const query = document.getElementById('input').value;
+        console.log('Search query:', query);
+        fetchBookData(query);
+    }
 });
 
 

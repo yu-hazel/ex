@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>야구 경기 기록</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-bottom: 20px;
+        }
+
+        .modal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            width: 300px;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        h2,
+        h3 {
+            margin-top: 0;
+        }
+
+        .record-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .record-item button {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="openModal">경기 기록하기</button>
+        <div v-if="isModalOpen" class="modal" @click.self="closeModal">
+            <div class="modal-content">
+                <span @click="closeModal" class="close">&times;</span>
+                <h2>경기 기록하기</h2>
+                <form @submit.prevent="saveRecord">
+                    <label for="date">날짜:</label>
+                    <input type="date" v-model="record.date" required>
+                    <label for="homeTeam">홈 팀:</label>
+                    <input type="text" v-model="record.homeTeam" required>
+                    <label for="awayTeam">원정 팀:</label>
+                    <input type="text" v-model="record.awayTeam" required>
+
+                    <h3 @click="toggleAccordion('home')">홈 팀 라인업</h3>
+                    <div v-if="accordion.home">
+                        <div v-for="(player, index) in record.homeLineup" :key="index">
+                            <input type="text" v-model="record.homeLineup[index]" placeholder="선수 이름">
+                        </div>
+                    </div>
+
+                    <h3 @click="toggleAccordion('away')">원정 팀 라인업</h3>
+                    <div v-if="accordion.away">
+                        <div v-for="(player, index) in record.awayLineup" :key="index">
+                            <input type="text" v-model="record.awayLineup[index]" placeholder="선수 이름">
+                        </div>
+                    </div>
+
+                    <h3>스코어</h3>
+                    <div v-for="inning in 12" :key="inning">
+                        <label :for="'homeInning' + inning">{{ inning }}회 홈 팀:</label>
+                        <input type="number" v-model="record.homeScores[inning - 1]" min="0" required>
+                        <label :for="'awayInning' + inning">{{ inning }}회 원정 팀:</label>
+                        <input type="number" v-model="record.awayScores[inning - 1]" min="0" required>
+                    </div>
+
+                    <label for="comments">경기 감상:</label>
+                    <textarea v-model="record.comments"></textarea>
+
+                    <button type="submit">저장</button>
+                </form>
+            </div>
+        </div>
+
+        <h2>경기 기록 목록</h2>
+        <ul>
+            <li v-for="(rec, index) in records" :key="index" class="record-item">
+                <span @click="openViewModal(index)">{{ rec.date }}: {{ rec.homeTeam }} vs {{ rec.awayTeam }}</span>
+                <button @click="editRecord(index)">수정</button>
+                <button @click="deleteRecord(index)">삭제</button>
+            </li>
+        </ul>
+
+        <div v-if="isViewModalOpen" class="modal" @click.self="closeViewModal">
+            <div class="modal-content">
+                <span @click="closeViewModal" class="close">&times;</span>
+                <div v-if="viewedRecord">
+                    <h3>{{ viewedRecord.date }}: {{ viewedRecord.homeTeam }} vs {{ viewedRecord.awayTeam }}</h3>
+                    <p><strong>홈 팀 라인업:</strong> {{ viewedRecord.homeLineup.join(', ') }}</p>
+                    <p><strong>원정 팀 라인업:</strong> {{ viewedRecord.awayLineup.join(', ') }}</p>
+                    <p><strong>스코어:</strong> 홈 팀: {{ viewedRecord.homeScores.join(', ') }} | 원정 팀: {{
+                        viewedRecord.awayScores.join(', ') }}</p>
+                    <p><strong>경기 감상:</strong> {{ viewedRecord.comments }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    isModalOpen: false,
+                    isViewModalOpen: false,
+                    isEditMode: false,
+                    editIndex: -1,
+                    records: JSON.parse(localStorage.getItem('records')) || [],
+                    record: {
+                        date: '',
+                        homeTeam: '',
+                        awayTeam: '',
+                        homeLineup: Array(10).fill(''),
+                        awayLineup: Array(10).fill(''),
+                        homeScores: Array(12).fill(0),
+                        awayScores: Array(12).fill(0),
+                        comments: ''
+                    },
+                    accordion: {
+                        home: false,
+                        away: false
+                    },
+                    viewedRecord: null
+                };
+            },
+            methods: {
+                openModal() {
+                    this.isModalOpen = true;
+                    this.isEditMode = false;
+                    this.resetRecord();
+                },
+                closeModal() {
+                    this.isModalOpen = false;
+                },
+                saveRecord() {
+                    if (this.isEditMode) {
+                        this.records[this.editIndex] = { ...this.record };
+                        this.isEditMode = false;
+                        this.editIndex = -1;
+                    } else {
+                        this.records.push({ ...this.record });
+                    }
+                    localStorage.setItem('records', JSON.stringify(this.records));
+                    this.closeModal();
+                },
+                openViewModal(index) {
+                    this.viewedRecord = this.records[index];
+                    this.isViewModalOpen = true;
+                },
+                closeViewModal() {
+                    this.isViewModalOpen = false;
+                },
+                editRecord(index) {
+                    this.record = { ...this.records[index] };
+                    this.editIndex = index;
+                    this.isEditMode = true;
+                    this.isModalOpen = true;
+                },
+                deleteRecord(index) {
+                    this.records.splice(index, 1);
+                    localStorage.setItem('records', JSON.stringify(this.records));
+                },
+                resetRecord() {
+                    this.record = {
+                        date: '',
+                        homeTeam: '',
+                        awayTeam: '',
+                        homeLineup: Array(10).fill(''),
+                        awayLineup: Array(10).fill(''),
+                        homeScores: Array(12).fill(0),
+                        awayScores: Array(12).fill(0),
+                        comments: ''
+                    };
+                },
+                toggleAccordion(section) {
+                    this.accordion[section] = !this.accordion[section];
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+
+</html>

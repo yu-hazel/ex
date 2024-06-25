@@ -18,6 +18,19 @@ export default {
         awayScores: Array(12).fill(0),
         comments: ''
       },
+      selectedTeams: [],
+      teams: [
+        { name: '한화', logo: '/hanwha.png' },
+        { name: '두산', logo: '/doosan.png' },
+        { name: 'KIA', logo: '/kia.png' },
+        { name: '키움', logo: '/kiwoom.png' },
+        { name: 'kt', logo: '/kt.png' },
+        { name: 'LG', logo: '/lg.png' },
+        { name: '롯데', logo: '/lotte.png' },
+        { name: 'NC', logo: '/nc.png' },
+        { name: '삼성', logo: '/samsung.png' },
+        { name: 'SSG', logo: '/ssg.png' },
+      ],
       accordion: {
         home: false,
         away: false
@@ -83,67 +96,104 @@ export default {
         awayScores: Array(12).fill(0),
         comments: ''
       };
+      this.selectedTeams = [];
+      this.showWarning = false;
     },
     toggleAccordion(section) {
       this.accordion[section] = !this.accordion[section];
     },
-    recordTeamNameHome(e) {
-      this.record.homeTeam = e.target.value;
+    setTeams() {
+      if (this.selectedTeams.length > 2) {
+        this.showWarning = true;
+        this.selectedTeams.pop(); // 마지막 선택을 취소
+      } else {
+        this.showWarning = false;
+        if (this.selectedTeams.length === 2) {
+          this.record.awayTeam = this.selectedTeams[0];
+          this.record.homeTeam = this.selectedTeams[1];
+        } else {
+          this.record.awayTeam = '';
+          this.record.homeTeam = '';
+        }
+      }
     },
-    recordTeamNameAway(e) {
-      this.record.awayTeam = e.target.value;
+    getLabel(index) {
+      return index === this.record.homeLineup.length - 1 ? '선발 투수' : `${index + 1}번 타자`;
+    },
+    getPlaceholder(index) {
+      if (index === this.record.homeLineup.length - 1) {
+        return '선발 투수';
+      }
+      return `${index + 1}번 타자`;
     },
   },
 }
 </script>
 
-<template>
+<!-- <template>
   <div id="app">
+    <v-app>
+      <v-main>
+        <v-container>
+          <v-btn color="primary">Hello Vuetify</v-btn>
+        </v-container>
+      </v-main>
+    </v-app>
     <button @click="openModal">경기 기록하기</button>
     <div v-if="isModalOpen" class="modal" @click.self="closeModal">
-      <div class="modal-content">
+      <div class="modalContent">
         <span @click="closeModal" class="close">&times;</span>
         <h2>경기 기록하기</h2>
         <form @submit.prevent="saveRecord">
           <label for="date">날짜:</label>
           <input type="date" v-model="record.date" required><br>
-          <label for="homeTeam">홈 팀:</label>
-          <input type="text" :value="record.homeTeam" @input="recordTeamNameHome" required><br>
-          <label for="awayTeam">원정 팀:</label>
-          <input type="text" :value="record.awayTeam" @input="recordTeamNameAway" required>
+          <h3>팀 선택</h3>
+          <p>원정팀, 홈팀 순서로 선택해 주세요.</p>
+          <p v-if="showWarning" style="color: red;">2개 팀까지만 선택할 수 있습니다.</p>
+          <div class="teamSelection">
+            <div v-for="(team, index) in teams" :key="index" class="teamOption">
+              <input type="checkbox" :id="'team' + index" :value="team.name" v-model="selectedTeams" @change="setTeams">
+              <label :for="'team' + index">
+                <img :src="team.logo" :alt="team.name" class="team-logo">
+                {{ team.name }}
+              </label>
+            </div>
+          </div>
 
           <h3 @click="toggleAccordion('home')">홈 팀 라인업</h3>
           <div v-if="accordion.home">
             <div v-for="(player, index) in record.homeLineup" :key="index">
-              <input type="text" v-model="record.homeLineup[index]" placeholder="선수 이름">
+              <input type="text" v-model="record.homeLineup[index]"
+                :placeholder="index === record.homeLineup.length - 1 ? '선발 투수' : '선수 이름'">
             </div>
           </div>
 
           <h3 @click="toggleAccordion('away')">원정 팀 라인업</h3>
           <div v-if="accordion.away">
             <div v-for="(player, index) in record.awayLineup" :key="index">
-              <input type="text" v-model="record.awayLineup[index]" placeholder="선수 이름">
+              <input type="text" v-model="record.awayLineup[index]"
+                :placeholder="index === record.awayLineup.length - 1 ? '선발 투수' : '선수 이름'">
             </div>
           </div>
 
           <h3>스코어</h3>
           <div class="scoreboard">
-            <div class="team-names">
+            <div class="teamNames">
               <span style="color: red;">{{ record.awayTeam }}</span>
               <span style="color: blue;">{{ record.homeTeam }}</span>
             </div>
-            <div class="score-header">
+            <div class="scoreHeader">
               <div> </div>
               <div v-for="inning in 12" :key="inning">{{ inning }}</div>
             </div>
-            <div class="score-row">
-              <div style="color: red;">{{ record.awayTeam }}</div>
+            <div class="scoreRow">
+              <div>{{ record.awayTeam }}</div>
               <div v-for="inning in 12" :key="'away' + inning">
                 <input type="number" v-model="record.awayScores[inning - 1]" min="0" required>
               </div>
             </div>
-            <div class="score-row">
-              <div style="color: blue;">{{ record.homeTeam }}</div>
+            <div class="scoreRow">
+              <div>{{ record.homeTeam }}</div>
               <div v-for="inning in 12" :key="'home' + inning">
                 <input type="number" v-model="record.homeScores[inning - 1]" min="0" required>
               </div>
@@ -160,7 +210,7 @@ export default {
 
     <h2>경기 기록 목록</h2>
     <ul>
-      <li v-for="(rec, index) in records" :key="index" class="record-item">
+      <li v-for="(rec, index) in records" :key="index" class="recordItem">
         <span @click="openViewModal(index)">{{ rec.date }}: {{ rec.homeTeam }} vs {{ rec.awayTeam }}</span>
         <button @click="editRecord(index)">수정</button>
         <button @click="deleteRecord(index)">삭제</button>
@@ -168,15 +218,12 @@ export default {
     </ul>
 
     <div v-if="isViewModalOpen" class="modal" @click.self="closeViewModal">
-      <div class="modal-content">
+      <div class="modalContent">
         <span @click="closeViewModal" class="close">&times;</span>
         <div v-if="viewedRecord">
           <h3>{{ viewedRecord.date }}: {{ viewedRecord.awayTeam }} vs {{ viewedRecord.homeTeam }}</h3>
           <p><strong>{{ viewedRecord.awayTeam }} 라인업:</strong> {{ viewedRecord.awayLineup.join(', ') }}</p>
           <p><strong>{{ viewedRecord.homeTeam }} 라인업:</strong> {{ viewedRecord.homeLineup.join(', ') }}</p>
-          <!-- <p><strong>이닝별 점수</strong><br></p>
-          <p>{{ viewedRecord.awayTeam }}: {{ viewedRecord.awayScores.join(' | ') }}</p>
-          <p>{{ viewedRecord.homeTeam }}: {{ viewedRecord.homeScores.join(' | ') }}</p> -->
           <p><strong>최종 스코어</strong></p><br>
           <p>{{ finalScore }}</p>
 
@@ -185,7 +232,159 @@ export default {
       </div>
     </div>
   </div>
+</template> -->
+
+<template>
+  <v-app>
+    <v-main>
+      <v-container>
+        <!-- Vuetify 버튼 -->
+        <v-btn @click="openModal">경기 기록하기</v-btn>
+
+        <!-- 기존 HTML 버튼 (필요 없으면 삭제 가능) -->
+        <!-- <button @click="openModal">경기 기록하기</button> -->
+
+        <!-- 모달 -->
+        <v-dialog v-model="isModalOpen" max-width="600px">
+          <v-card>
+            <v-card-title>
+              <span>경기 기록하기</span>
+              <v-btn icon @click="closeModal">
+                <v-icon>mdi-close</v-icon>
+              </v-btn>
+            </v-card-title>
+            <v-card-text>
+              <form @submit.prevent="saveRecord">
+                <v-text-field v-model="record.date" label="날짜" type="date" required></v-text-field>
+
+                <h3>팀 선택</h3>
+                <p>원정팀, 홈팀 순서로 선택해 주세요.</p>
+                <!-- <v-alert v-if="showWarning" type="warning">2개 팀까지만 선택할 수 있습니다.</v-alert> -->
+                <v-row>
+                  <v-col v-for="(team, index) in teams" :key="index" cols="12" sm="6" md="4">
+                    <v-checkbox :id="'team' + index" :value="team.name" v-model="selectedTeams" @change="setTeams">
+                      <template v-slot:label>
+                        <img :src="team.logo" :alt="team.name" class="team-logo" />
+                        {{ team.name }}
+                      </template>
+                    </v-checkbox>
+                  </v-col>
+                </v-row>
+
+                <v-expand-transition>
+                  <div>
+                    <div class="lineupTitle">
+                      <h3 @click="toggleAccordion('home')">홈 팀 라인업</h3>
+                      <v-btn size="x-small" icon @click="toggleAccordion('away')">
+                        <v-icon x-small>{{ accordion.home ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+                      </v-btn>
+                    </div>
+                    <v-card-text v-if="accordion.home">
+                      <v-row>
+                        <v-col v-for="(player, index) in record.homeLineup" :key="index" cols="12">
+                          <v-text-field variant="underlined" v-model="record.homeLineup[index]" :label="getLabel(index)"
+                            :placeholder="getPlaceholder(index)"></v-text-field>
+                        </v-col>
+                      </v-row>
+                    </v-card-text>
+                  </div>
+                </v-expand-transition>
+
+                <v-expand-transition>
+                  <div>
+                    <div class="lineupTitle">
+                      <h3 @click="toggleAccordion('away')">원정 팀 라인업</h3>
+                      <v-btn size="x-small" icon @click="toggleAccordion('away')">
+                        <v-icon x-small>{{ accordion.home ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+                      </v-btn>
+                    </div>
+                    <v-card-text v-if="accordion.away">
+                      <v-row>
+                        <v-col v-for="(player, index) in record.awayLineup" :key="index" cols="12">
+                          <v-text-field variant="underlined" v-model="record.homeLineup[index]" :label="getLabel(index)"
+                            :placeholder="getPlaceholder(index)"></v-text-field>
+                        </v-col>
+                      </v-row>
+                    </v-card-text>
+                  </div>
+                </v-expand-transition>
+
+                <h3>스코어</h3>
+                <div class="scoreboard">
+                  <div class="teamNames">
+                    <span style="color: red;">{{ record.awayTeam }}</span>
+                    <span style="color: blue;">{{ record.homeTeam }}</span>
+                  </div>
+                  <div class="scoreHeader">
+                    <div> </div>
+                    <div v-for="inning in 12" :key="inning">{{ inning }}</div>
+                  </div>
+                  <div class="scoreRow">
+                    <div>{{ record.awayTeam }}</div>
+                    <div v-for="inning in 12" :key="'away' + inning">
+                      <input v-model="record.awayScores[inning - 1]" type="number" min="0" class="score-input" />
+                    </div>
+                  </div>
+                  <div class="scoreRow">
+                    <div>{{ record.homeTeam }}</div>
+                    <div v-for="inning in 12" :key="'home' + inning">
+                      <input v-model="record.homeScores[inning - 1]" type="number" min="0" class="score-input" />
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <v-textarea v-model="record.comments" label="경기 감상" rows="3"></v-textarea>
+                <v-btn type="submit" color="primary">저장</v-btn>
+              </form>
+            </v-card-text>
+          </v-card>
+        </v-dialog>
+
+        <h2>경기 기록 목록</h2>
+        <v-list>
+          <v-list-item v-for="(rec, index) in records" :key="index">
+            <v-list-item-content @click="openViewModal(index)">
+              <v-list-item-title>{{ rec.date }}: {{ rec.homeTeam }} vs {{ rec.awayTeam }}</v-list-item-title>
+            </v-list-item-content>
+            <v-list-item-action>
+              <v-btn icon @click="editRecord(index)">
+                <v-icon>mdi-pencil</v-icon>
+              </v-btn>
+              <v-btn icon @click="deleteRecord(index)">
+                <v-icon>mdi-delete</v-icon>
+              </v-btn>
+            </v-list-item-action>
+          </v-list-item>
+        </v-list>
+
+        <v-dialog v-model="isViewModalOpen" max-width="600px">
+          <v-card>
+            <v-card-title>
+              <span>{{ viewedRecord.date }}: {{ viewedRecord.awayTeam }} vs {{ viewedRecord.homeTeam }}</span>
+              <v-btn icon @click="closeViewModal">
+                <v-icon>mdi-close</v-icon>
+              </v-btn>
+            </v-card-title>
+            <v-card-text v-if="viewedRecord">
+              <p class="viewLineup">
+                <strong>{{ viewedRecord.awayTeam }} 라인업:</strong>
+                {{ viewedRecord.awayLineup.join(', ') }}
+              </p>
+              <p class="viewLineup">
+                <strong>{{ viewedRecord.homeTeam }} 라인업:</strong>
+                {{ viewedRecord.homeLineup.join(', ') }}
+              </p>
+              <p><strong>최종 스코어</strong></p>
+              <p>{{ finalScore }}</p>
+              <p><strong>경기 감상:</strong> {{ viewedRecord.comments }}</p>
+            </v-card-text>
+          </v-card>
+        </v-dialog>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
+
 
 <style scoped>
 body {
@@ -193,11 +392,13 @@ body {
   padding: 20px;
 }
 
+/* button 스타일 제거 또는 최소화 */
 button {
   padding: 10px 20px;
   margin-bottom: 20px;
 }
 
+/* .modal, .modalContent, .close 스타일 유지 */
 .modal {
   display: flex;
   justify-content: center;
@@ -210,7 +411,7 @@ button {
   background: rgba(0, 0, 0, 0.5);
 }
 
-.modal-content {
+.modalContent {
   background: white;
   padding: 20px;
   border-radius: 5px;
@@ -224,6 +425,7 @@ button {
   cursor: pointer;
 }
 
+/* div[v-for] 관련 스타일 유지 */
 div[v-for]>div {
   width: 45%;
 }
@@ -241,6 +443,13 @@ div[v-for]>div input {
 h2,
 h3 {
   margin-top: 0;
+}
+
+.teamSelection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 }
 
 .recordTeam {
@@ -269,13 +478,13 @@ h3 {
   width: 30px;
 }
 
-.record-item {
+.recordItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.record-item button {
+.recordItem button {
   margin-left: 10px;
 }
 
@@ -285,7 +494,7 @@ h3 {
   align-items: center;
 }
 
-.team-names {
+.teamNames {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -293,25 +502,73 @@ h3 {
   display: none;
 }
 
-.score-header,
-.score-row {
+.scoreHeader,
+.scoreRow {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
 
-.score-header div,
-.score-row div {
+.scoreHeader div,
+.scoreRow div {
   flex: 1;
   text-align: center;
 }
 
-.score-header div {
+.scoreHeader div {
   font-weight: bold;
 }
 
-.score-row div input {
+.scoreRow div input {
   width: 30px;
   text-align: center;
+}
+
+.v-theme--light {
+  --v-medium-emphasis-opacity: 1;
+}
+
+.v-card-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.viewLineup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.v-card-title button {
+  position: absolute;
+  right: 10px;
+}
+
+.lineupTitle {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+</style>
+
+<style>
+.v-list-item__content {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.v-btn--icon.v-btn--density-default {
+  margin: 5px;
+}
+
+.icon-btn .v-icon {
+  font-size: 16px;
 }
 </style>

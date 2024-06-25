@@ -1,45 +1,4 @@
 
-
-// https://cors-anywhere.herokuapp.com/
-// fetch("https://cors-anywhere.herokuapp.com/https://openapi.naver.com/v1/search/book.json?query=프로그래밍&display=100", {
-//     "method": "GET",
-//     "headers": {
-//         "X-Naver-Client-Id": "LzQrQC8j5ue3yd04K9UB",
-//         "X-Naver-Client-Secret": "9oJA3_nJSw"
-//     }
-// })
-// .then((response) => response.json())
-// .then((data) => {
-//     console.log(data)
-//     console.log(data.items[1].title)
-// })
-// .catch((error) => console.error('Fetch error:', error));
-
-
-// async await
-
-// async function fetchBookData() {
-//     const url = "https://cors-anywhere.herokuapp.com/https://openapi.naver.com/v1/search/book.json?query=프로그래밍&display=100";
-//     const options = {
-//         method: "GET",
-//         headers: {
-//             "X-Naver-Client-Id": "LzQrQC8j5ue3yd04K9UB",
-//             "X-Naver-Client-Secret": "9oJA3_nJSw"
-//         }
-//     };
-
-//     try {
-//         const response = await fetch(url, options);
-//         const data = await response.json();
-//         console.log(data);
-//         console.log(data.items[1].title);
-//     } catch (error) {
-//         console.error('Fetch error:', error);
-//     }
-// }
-// fetchBookData();
-
-
 // 입력받은 검색어로 자료 추출
 
 async function fetchBookData(query) {
@@ -103,21 +62,3 @@ document.getElementById('input').addEventListener('keypress', (e) => {
         fetchBookData(query);
     }
 });
-
-
-
-
-// var settings = {
-//     "url": "https://openapi.naver.com/v1/search/book.json?query=일본",
-//     "method": "GET",
-//     "timeout": 0,
-//     "headers": {
-//       "X-Naver-Client-Id": "LzQrQC8j5ue3yd04K9UB",
-//       "X-Naver-Client-Secret": "9oJA3_nJSw"
-//     },
-//   };
-
-//   $.ajax(settings).done(function (response) {
-//     console.log(response);
-//   });
-

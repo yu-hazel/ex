@@ -23,12 +23,56 @@
             <p id="modalAuthor"></p>
             <p id="modalIsbn"></p>
             <p id="modalPrice"></p>
+            <input type="number" id="modalPages" placeholder="페이지 수를 입력하세요">
+            <textarea id="modalComment" placeholder="소감을 입력하세요"></textarea>
+            <select id="modalCategory">
+                <option value="wantToRead">읽고 싶은 책</option>
+                <option value="reading">읽는 중인 책</option>
+                <option value="finished">다 읽은 책</option>
+            </select>
+            <button id="saveButton">저장</button>
+        </div>
+    </div>
+
+    <div class="tabs">
+        <button class="tablinks" data-tab="wantToReadTab">읽고 싶은 책</button>
+        <button class="tablinks" data-tab="readingTab">읽는 중인 책</button>
+        <button class="tablinks" data-tab="finishedTab">다 읽은 책</button>
+    </div>
+
+    <div id="wantToReadTab" class="tabcontent"></div>
+    <div id="readingTab" class="tabcontent"></div>
+    <div id="finishedTab" class="tabcontent"></div>
+
+    <div id="savedBookModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img id="savedModalImage" src="#" alt="책 이미지">
+            <h2 id="savedModalTitle">책 제목</h2>
+            <p id="savedModalAuthor"></p>
+            <p id="savedModalIsbn"></p>
+            <p id="savedModalPages"></p>
+            <p id="savedModalComment"></p>
+            <p id="savedModalCategory"></p>
+            <select id="editModalCategory">
+                <option value="wantToRead">읽고 싶은 책</option>
+                <option value="reading">읽는 중인 책</option>
+                <option value="finished">다 읽은 책</option>
+            </select>
+            <input type="number" id="editModalPages" style="display:none;" placeholder="페이지 수를 입력하세요">
+            <textarea id="editModalComment" style="display:none;" placeholder="소감을 입력하세요"></textarea>
+            <div class="buttonWrapper">
+                <button id="deleteButton">삭제</button>
+                <button id="editButton">수정</button>
+            </div>
+            <button id="saveEditButton" style="display:none;">저장</button>
         </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="/ex/js/bookeep.js"></script>
+    <!-- <script src="/ex/js/bookeep.js"></script> -->
+    <script src="/ex/js/bookeep_vanilla.js"></script>
 </body>
 
 </html>

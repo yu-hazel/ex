@@ -14,14 +14,19 @@
     box-sizing: border-box;
     /* outline: 1px solid cornflowerblue; */
 }
+
 :root {
     font-family: "Roboto", sans-serif;
     /* --swiper-theme-color: #000; */
 }
-header, .sec, .inner {
+
+header,
+.sec,
+.inner {
     display: flex;
     margin: 0 auto;
 }
+
 header {
     width: 100%;
     height: 119px;
@@ -34,6 +39,7 @@ header {
     left: 0;
     z-index: 1;
 }
+
 .logo_sprite {
     width: 185px;
     height: 19px;
@@ -46,11 +52,13 @@ header {
     /* 양수로 보내면 스크롤바가 생김 */
     overflow: hidden;
 }
+
 .menu {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .menu span {
     font-size: 20px;
     font-weight: 700;
@@ -59,6 +67,7 @@ header {
     position: relative;
     transition: color 0.3s;
 }
+
 .menu span::after {
     content: "";
     position: absolute;
@@ -69,12 +78,15 @@ header {
     background-color: #0066FE;
     transition: width 0.3s;
 }
+
 .menu span:hover::after {
     width: 100%;
 }
+
 .menu span:last-of-type {
     margin-right: 0;
 }
+
 .eng {
     display: flex;
     padding: 8px 5px 8px 8px;
@@ -87,26 +99,32 @@ header {
     margin-left: 50px;
     transition: 0.3s ease;
 }
+
 .eng:hover {
-    background-color:#0066FE;
+    background-color: #0066FE;
     color: #fff;
 }
+
 header .menu .menuClose {
     display: none;
 }
+
 header .hamburger {
     display: none;
 }
+
 .sec {
     margin-top: 119px;
     width: 1529px;
 }
+
 .inner {
     width: 1201px;
     padding: 50px 0;
     align-items: flex-start;
     gap: 100px;
 }
+
 aside {
     display: flex;
     flex-direction: column;
@@ -115,12 +133,14 @@ aside {
     font-weight: 800;
     letter-spacing: 1px;
 }
+
 .keywords {
     display: flex;
     flex-direction: column;
     gap: 10px;
     align-items: flex-start;
 }
+
 button {
     display: inline-flex;
     width: auto;
@@ -139,51 +159,64 @@ button {
     gap: 10px;
     transition: background-color 0.3s, color 0.3s;
 }
+
 button:hover {
     background-color: #0066FE;
     color: #fff;
     border: 1px solid #074BB2;
 }
+
 .news {
     display: flex;
     flex-direction: column;
     width: 987px;
     gap: 34px;
 }
+
 /* swiper */
 .swiper {
     width: 100%;
     height: 507px;
     z-index: 0;
 }
+
 .swiper-button-prev,
 .swiper-button-next {
     display: none;
 }
+
 /* 스와이퍼 페이지네이션 캐러셀 하단으로 위치 조정 */
-.swiper-horizontal>.swiper-pagination-progressbar, .swiper-pagination-progressbar.swiper-pagination-horizontal, .swiper-pagination-progressbar.swiper-pagination-vertical.swiper-pagination-progressbar-opposite, .swiper-vertical>.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {
+.swiper-horizontal>.swiper-pagination-progressbar,
+.swiper-pagination-progressbar.swiper-pagination-horizontal,
+.swiper-pagination-progressbar.swiper-pagination-vertical.swiper-pagination-progressbar-opposite,
+.swiper-vertical>.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {
     top: auto;
     bottom: 10px;
 }
+
 .mySwiper .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
     background: var(--swiper-theme-color);
     --swiper-theme-color: #000;
 }
+
 /* swiper end */
 .slideContent {
     margin-bottom: 50px;
 }
+
 .slideContent h3 {
     font-size: 20px;
     font-weight: 700;
     margin: 32px 0 14px;
 }
+
 .recent {
     font-size: 15px;
     font-weight: 700;
     letter-spacing: 1.2px;
     position: relative;
 }
+
 .recent::after {
     content: "";
     position: absolute;
@@ -193,21 +226,25 @@ button:hover {
     left: 67px;
     background: url(/ex/img/naverlabs/Polygon.png) no-repeat;
 }
+
 article {
     display: flex;
     width: 987px;
     flex-direction: column;
 }
+
 .articleOne {
     display: flex;
     justify-content: space-between;
 }
+
 .articleThumbnail {
     order: 2;
     width: 280px;
     height: 150px;
     background: url(/ex/img/naverlabs/article.png);
 }
+
 .articleText {
     display: flex;
     width: 665px;
@@ -215,10 +252,12 @@ article {
     order: 1;
     gap: 24px;
 }
+
 .articleText h3 {
     font-size: 20px;
     font-weight: 700;
 }
+
 .articleText p {
     overflow: hidden;
     display: -webkit-box;
@@ -228,15 +267,18 @@ article {
     font-weight: 300;
     line-height: 20px;
 }
+
 .dateInfo {
     color: #B5B5B5;
     font-size: 13px;
     font-weight: 500;
 }
+
 .dateInfo span:first-child {
     margin-right: 28px;
     position: relative;
 }
+
 .dateInfo span:first-child::after {
     width: 1px;
     height: 10px;
@@ -246,14 +288,17 @@ article {
     top: 2px;
     right: -15px;
 }
+
 .article {
     flex-direction: row;
 }
+
 .article.keywords {
     padding-bottom: 30px;
     border-bottom: 1px solid #cacaca;
     margin-bottom: 40px;
 }
+
 .footerInner {
     display: flex;
     justify-content: space-between;
@@ -265,19 +310,25 @@ article {
     color: #989898;
     margin: 0 auto;
 }
-.socialGroup, .corpArea, .corpList {
+
+.socialGroup,
+.corpArea,
+.corpList {
     display: flex;
 }
+
 .socialGroup {
     width: 497px;
     justify-content: space-between;
     padding-left: 31px;
 }
+
 .corpArea {
     width: 587px;
     justify-content: space-between;
     align-items: center;
 }
+
 .siteButton {
     display: flex;
     position: relative;
@@ -293,6 +344,7 @@ article {
     color: #989898;
     cursor: pointer;
 }
+
 .socialGroup li {
     list-style-type: none;
     position: relative;
@@ -300,14 +352,17 @@ article {
     font-weight: 500;
     cursor: pointer;
 }
+
 .corpList {
     gap: 20px;
     justify-content: space-between;
     align-items: center;
 }
+
 .corpList span {
     cursor: pointer;
 }
+
 .social::after {
     position: absolute;
     width: 23px;
@@ -316,15 +371,19 @@ article {
     top: 0px;
     content: "";
 }
+
 .facebook::after {
     background: url(/ex/img/naverlabs/facebook.png) no-repeat;
 }
+
 .instagram::after {
     background: url(/ex/img/naverlabs/insta.png) no-repeat;
 }
+
 .youtube::after {
     background: url(/ex/img/naverlabs/youtube.png) no-repeat;
 }
+
 .linkedin::after {
     background: url(/ex/img/naverlabs/linkedin.png) no-repeat;
 }

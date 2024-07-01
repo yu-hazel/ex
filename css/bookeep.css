@@ -51,7 +51,8 @@ body {
     justify-content: center;
     align-items: center;
 }
-.book {
+.book,
+.savedBook {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -119,4 +120,35 @@ body {
 #modalImage {
     max-width: 100%;
     height: auto;
+}
+#viewSavedBooksButton {
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    transition: 0.3s;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+#viewSavedBooksButton:hover {
+    background-color: rgb(165, 105, 230);
+    color: #fff;
+}
+#savedBooks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+#wantToReadTab, #readingTab, #finishedTab {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+.buttonWrapper {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
 }

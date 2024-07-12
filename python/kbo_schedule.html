@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KBO 크롤링 테스트</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>KBO 7월 일정 및 결과</h1>
+    <table id="schedule-table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Home Team</th>
+                <th>Away Team</th>
+                <th>Home Score</th>
+                <th>Away Score</th>
+                <th>Preview</th>
+                <th>TV Channel</th>
+                <th>Location</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        // JSON 데이터 불러오기
+        fetch('kbo_schedule.json')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('schedule-table').getElementsByTagName('tbody')[0];
+
+                for (const [date, games] of Object.entries(data)) {
+                    games.forEach(game => {
+                        const row = tableBody.insertRow();
+
+                        const cellDate = row.insertCell(0);
+                        cellDate.textContent = date;
+
+                        const cellTime = row.insertCell(1);
+                        cellTime.textContent = game.time;
+
+                        const cellHomeTeam = row.insertCell(2);
+                        cellHomeTeam.textContent = game.home_team;
+
+                        const cellAwayTeam = row.insertCell(3);
+                        cellAwayTeam.textContent = game.away_team;
+
+                        const cellHomeScore = row.insertCell(4);
+                        cellHomeScore.textContent = game.home_score;
+
+                        const cellAwayScore = row.insertCell(5);
+                        cellAwayScore.textContent = game.away_score;
+
+                        const cellPreview = row.insertCell(6);
+                        cellPreview.textContent = game.preview;
+
+                        const cellTvChannel = row.insertCell(7);
+                        cellTvChannel.textContent = game.tv_channel;
+
+                        const cellLocation = row.insertCell(8);
+                        cellLocation.textContent = game.location;
+
+                        const cellResult = row.insertCell(9);
+                        cellResult.textContent = game.result;
+                    });
+                }
+            })
+            .catch(error => console.error('Error loading JSON:', error));
+    </script>
+</body>
+
+</html>

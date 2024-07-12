@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <title>슈파베이스</title>
+    <title>Supabase login test</title>
 </head>
 
 <body>
@@ -49,6 +49,47 @@
             checkLogin();
         }
         document.querySelector("#logout").addEventListener("click", signOut);
+    </script>
+
+    <div id="history"></div>
+    <script>
+        async function refreshHistory() {
+            let { data: record, error } = await client.from("page").select("*");
+            let tag = "";
+            for (let i = 0; i < record.length; i++) {
+                tag += `<div style="margin:20px 0">
+                <h2>${record[i].title}</h2>${record[i].body} <p>
+                <input type="button" value="delete" onclick="
+                deleteRecord(${record[i].id})
+                " />
+    </p>
+            </div>
+            `;
+            }
+            document.querySelector("#history").innerHTML = tag;
+        }
+        refreshHistory();
+    </script>
+
+    <input type="button" value="create" id="create_btn" />
+
+    <script>
+        async function recordHandler() {
+            const { data, error } = await client
+                .from("page")
+                .insert([{ title: prompt("title?"), body: prompt("body?") }]);
+            refreshHistory();
+        }
+        document
+            .querySelector("#create_btn")
+            .addEventListener("click", recordHandler);
+    </script>
+
+    <script>
+        async function deleteRecord(id) {
+            const { data, error } = await client.from("page").delete().eq("id", id);
+            refreshHistory();
+        }
     </script>
 
 </body>

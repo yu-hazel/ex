@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KBO Schedule</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+
+        #calendar {
+            margin-top: 20px;
+        }
+
+        #schedule-table {
+            width: 80%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>KBO Schedule and Results</h1>
+    <input type="date" id="calendar">
+    <table id="schedule-table">
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Home Team</th>
+                <th>Away Team</th>
+                <th>Home Score</th>
+                <th>Away Score</th>
+                <th>Preview</th>
+                <th>TV Channel</th>
+                <th>Location</th>
+                <th>Result</th>
+                <th>Comment</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Comment on the Game</h2>
+            <form id="commentForm">
+                <input type="hidden" id="commentDate">
+                <input type="hidden" id="commentTime">
+                <input type="hidden" id="commentId">
+                <textarea id="commentText" rows="4" cols="50" placeholder="코멘트를 입력하세요..."></textarea><br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+<script>
+    document.getElementById('calendar').addEventListener('change', function () {
+        const selectedDate = new Date(this.value);
+        const formattedDate = formatDate(selectedDate);
+        console.log('Selected date:', formattedDate); // Debugging log
+        fetchScheduleForDate(formattedDate);
+    });
+
+    function formatDate(date) {
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const dayOfWeek = ['일', '월', '화', '수', '목', '금', '토'][date.getDay()];
+        return `${month}.${day}(${dayOfWeek})`;
+    }
+
+    function fetchScheduleForDate(date) {
+            const apiUrl = `https://vovzpunshmcodmkletaw.supabase.co/rest/v1/kbo?date=eq.${date}`;
+            console.log('API URL:', apiUrl); // Debugging log
+
+            fetch(apiUrl, {
+                headers: {
+                    'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZvdnpwdW5zaG1jb2Rta2xldGF3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTgxMDg5MzUsImV4cCI6MjAzMzY4NDkzNX0.aVXi_AbLx-AGNwWVa0MB-WiNrkht2Eq0ECnBwDds2Kc',
+                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZvdnpwdW5zaG1jb2Rta2xldGF3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTgxMDg5MzUsImV4cCI6MjAzMzY4NDkzNX0.aVXi_AbLx-AGNwWVa0MB-WiNrkht2Eq0ECnBwDds2Kc`
+                }
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Fetched data:', data); // Debugging log
+                    const tableBody = document.getElementById('schedule-table').getElementsByTagName('tbody')[0];
+                    tableBody.innerHTML = ''; // Clear existing table data
+
+                    data.forEach(game => {
+                        const row = tableBody.insertRow();
+
+                        const cellTime = row.insertCell(0);
+                        cellTime.textContent = game.time;
+
+                        const cellHomeTeam = row.insertCell(1);
+                        cellHomeTeam.textContent = game.home_team;
+
+                        const cellAwayTeam = row.insertCell(2);
+                        cellAwayTeam.textContent = game.away_team;
+
+                        const cellHomeScore = row.insertCell(3);
+                        cellHomeScore.textContent = game.home_score;
+
+                        const cellAwayScore = row.insertCell(4);
+                        cellAwayScore.textContent = game.away_score;
+
+                        const cellPreview = row.insertCell(5);
+                        cellPreview.textContent = game.preview;
+
+                        const cellTvChannel = row.insertCell(6);
+                        cellTvChannel.textContent = game.tv_channel;
+
+                        const cellLocation = row.insertCell(7);
+                        cellLocation.textContent = game.location;
+
+                        const cellResult = row.insertCell(8);
+                        cellResult.textContent = game.result;
+
+                        const cellComment = row.insertCell(9);
+                        cellComment.textContent = game.comment ? game.comment : 'No comment';
+
+                        row.addEventListener('click', () => {
+                            openModal(game.id, game.comment);
+                        });
+                    });
+                })
+                .catch(error => console.error('Error fetching schedule:', error));
+        }
+
+        function openModal(id, comment) {
+            const modal = document.getElementById("myModal");
+            modal.style.display = "block";
+
+            document.getElementById("commentId").value = id;
+            document.getElementById("commentText").value = comment ? comment : '';
+        }
+
+        document.querySelector(".close").onclick = function () {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        document.getElementById("commentForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const id = document.getElementById("commentId").value;
+            const comment = document.getElementById("commentText").value;
+
+            saveComment(id, comment);
+        });
+
+        function saveComment(id, comment) {
+            const apiUrl = `https://vovzpunshmcodmkletaw.supabase.co/rest/v1/rpc/update_kbo_comment`;
+            const data = {
+                _id: id,
+                _comment: comment
+            };
+            console.log('Saving comment to URL:', apiUrl); // Debugging log
+
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZvdnpwdW5zaG1jb2Rta2xldGF3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTgxMDg5MzUsImV4cCI6MjAzMzY4NDkzNX0.aVXi_AbLx-AGNwWVa0MB-WiNrkht2Eq0ECnBwDds2Kc',
+                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZvdnpwdW5zaG1jb2Rta2xldGF3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTgxMDg5MzUsImV4cCI6MjAzMzY4NDkzNX0.aVXi_AbLx-AGNwWVa0MB-WiNrkht2Eq0ECnBwDds2Kc`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json().catch(() => ({}));  // Handle case where response is not JSON
+                })
+                .then(result => {
+                    console.log('Comment saved:', result); // Debugging log
+                    document.getElementById("myModal").style.display = "none";
+                    // Refresh the table to show updated comment
+                    const selectedDate = new Date(document.getElementById('calendar').value);
+                    const formattedDate = formatDate(selectedDate);
+                    fetchScheduleForDate(formattedDate);
+                })
+                .catch(error => console.error('Error saving comment:', error));
+        }
+</script>
+
+    </body>
+    
+    </html>
